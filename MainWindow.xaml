@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel>
+            <TextBlock TextAlignment="Center" Margin="0 50 0 0" FontSize="22"> Добро пожаловать 
+            <LineBreak/> в автосервис!
+            </TextBlock>
+            <TextBlock TextAlignment="Center" Margin="0 5 0 0">Ещё не зарегистрированы?</TextBlock>
+            <TextBlock TextAlignment="Center">Тогда нажмите сюда</TextBlock>
+            <Button x:Name="Button_sing_up" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Зарегистрироваться" Margin="0 5 0 0"> 
+                
+            </Button>
+            <TextBlock  TextAlignment="Center" Margin="0 15 0 0" FontSize="22">Вход</TextBlock>
+            <TextBox x:Name="TextBox_login" GotFocus="TextBox_login_GotFocus" LostFocus="TextBox_login_LostFocus" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Left" FontSize="13" Width="120" Height="25" Opacity="0.3" Margin="0 30 0 0">Логин</TextBox>
+            <TextBox x:Name="TextBox_password" GotFocus="TextBox_password_GotFocus" LostFocus="TextBox_password_LostFocus" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Left" FontSize="13" Width="120" Height="25"  Opacity="0.3" Margin="0 5 0 0">Пароль</TextBox>
+            
+        </StackPanel>
+        
     </Grid>
 </Window>
