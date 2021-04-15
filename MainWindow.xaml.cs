@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cursovoy_project.View;
+using Cursovoy_project.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,16 +17,65 @@ using System.Windows.Shapes;
 
 namespace Cursovoy_project
 {
+    public interface IMainWindowsCodeBehind
+    {
+        void LoadWiew(View_number typeView);
+    }
+    public enum View_number
+    {
+        Main,
+        Login,
+        Register
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainWindowsCodeBehind
     {
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += MainWindow_loaded;
         }
-        private void TextBox_login_GotFocus(object sender, RoutedEventArgs e)
+        private void MainWindow_loaded(object sender, RoutedEventArgs e)
+        {
+            MenuViewModel vm = new MenuViewModel();
+            vm.CodeBehind = this;
+            this.DataContext = vm;
+
+            LoadWiew(View_number.Main);
+        }
+
+        public void LoadWiew(View_number typeView)
+        {
+            switch (typeView)
+            {
+                case View_number.Main:
+                    // Загружаем страницу
+                    StartPage view = new StartPage();
+                    StartPageViewModel viewModel = new StartPageViewModel(this);
+                    //Связываем
+                    view.DataContext = viewModel;
+                    //Отображаем
+                    this.OutputView.Content = view;
+                    break;
+                case View_number.Login:
+                    LoginPage viewL = new LoginPage();
+                    LoginPageViewModel viewModelL = new LoginPageViewModel(this);
+                    viewL.DataContext = viewModelL;
+                    this.OutputView.Content = viewL;
+                    break;
+                case View_number.Register:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+/*
+ * private void TextBox_login_GotFocus(object sender, RoutedEventArgs e)
         {
             if (TextBox_login.Text == "Логин")
             {
@@ -62,5 +113,4 @@ namespace Cursovoy_project
             else
                 TextBox_password.BorderBrush = (Brush)System.ComponentModel.TypeDescriptor.GetConverter(typeof(Brush)).ConvertFromInvariantString("#606060");
         }
-    }
-}
+*/
