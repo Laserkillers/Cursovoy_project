@@ -28,7 +28,7 @@
                    HorizontalAlignment="Center" VerticalAlignment="Top"
                    FontSize="12" Foreground="White" Grid.ColumnSpan="2">
                 Уже зарегистрированы? <LineBreak/>
-            Тогда нажмите сюда:
+            Тогда нажмите войти
         </TextBlock>
         <Button Grid.Column="0" Grid.Row="1" Width="120" Height="30"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
