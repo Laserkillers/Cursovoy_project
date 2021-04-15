@@ -16,7 +16,7 @@ namespace Cursovoy_project.View
     /// <summary>
     /// Логика взаимодействия для RegisterPage.xaml
     /// </summary>
-    public partial class RegisterPage : Page
+    public partial class RegisterPage : UserControl
     {
         public RegisterPage()
         {
