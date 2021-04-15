@@ -19,7 +19,7 @@
                 Height="30" Width="180" 
                 VerticalAlignment="Center" Content="Зарегистрироваться" 
                 FontFamily="Verdana" Foreground="#ecf0f1" Background="#34495e"
-                Margin="0 8 0 0" FontSize="15">
+                Margin="0 8 0 0" FontSize="15" Command="{Binding GoToRegisterPage}">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>

@@ -66,6 +66,10 @@ namespace Cursovoy_project
                     this.OutputView.Content = viewL;
                     break;
                 case View_number.Register:
+                    RegisterPage viewR = new RegisterPage();
+                    RegisterPageViewModel viewModelR = new RegisterPageViewModel(this);
+                    viewR.DataContext = viewModelR;
+                    this.OutputView.Content = viewR;
                     break;
                 default:
                     break;
