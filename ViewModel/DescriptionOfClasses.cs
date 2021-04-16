@@ -21,16 +21,16 @@ namespace Cursovoy_project.ViewModel
             set { _AccountType = value; }
         }
 
-        private string _Login;
+        private string _Login = "Not set";
         public string Login
         {
-            get { return _Login ?? "Not set"; }
+            get { return _Login; }
             set { _Login = value; }
         }
-        private string _Password;
+        private string _Password = "Not set";
         public string Password
         {
-            get { return _Password ?? "Not set"; }
+            get { return _Password; }
             set { _Password = value; }
         }
         private bool _Validated = false;
@@ -42,31 +42,31 @@ namespace Cursovoy_project.ViewModel
     }
     class User_content
     {
-        private string _Surname;
+        private string _Surname = "Not set";
         public string Surname
         {
-            get { return _Surname ?? "Not set"; }
+            get { return _Surname; }
             set { _Surname = value; }
         }
 
-        private string _Name;
+        private string _Name = "Not set";
         public string Name
         {
-            get { return _Name ?? "Not set"; }
+            get { return _Name; }
             set { _Name = value; }
         }
 
-        private string _MiddleName;
+        private string _MiddleName = "Not set";
         public string MiddleName
         {
-            get { return _MiddleName ?? "Not set"; }
+            get { return _MiddleName; }
             set { _MiddleName = value; }
         }
 
-        private string _DateBirth;
+        private string _DateBirth = "Not set";
         public string DateBirth
         {
-            get { return _DateBirth ?? "Not set"; }
+            get { return _DateBirth; }
             set { _DateBirth = value; }
         }
 
@@ -86,24 +86,24 @@ namespace Cursovoy_project.ViewModel
     }
     class Car_info
     {
-        private string _GosNumber;
+        private string _GosNumber = "Not set";
         public string GosNumber
         {
-            get { return _GosNumber ?? "Not set"; }
+            get { return _GosNumber; }
             set { _GosNumber = value; }
         }
 
-        private string _CarMark;
+        private string _CarMark = "Not set";
         public string CarMark
         {
-            get { return _CarMark ?? "Not set"; }
+            get { return _CarMark; }
             set { _CarMark = value; }
         }
 
-        private string _CarBrand;
+        private string _CarBrand = "Not set";
         public string CarBrand
         {
-            get { return _CarBrand ?? "Not set"; }
+            get { return _CarBrand; }
             set { _CarBrand = value; }
         }
 
