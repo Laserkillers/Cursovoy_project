@@ -10,6 +10,9 @@ namespace Cursovoy_project.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         private IMainWindowsCodeBehind _MainCodeBehind;
+
+        private User Customer = new User();
+        //private User_content _Customer_data;
         
         public RegisterPageViewModel(IMainWindowsCodeBehind codeBehind)
         {
@@ -32,6 +35,106 @@ namespace Cursovoy_project.ViewModel
         private void OnGoToLoginPage()
         {
             _MainCodeBehind.LoadWiew(View_number.Login);
+        }
+
+        private RelayCommand _Register;
+
+        public RelayCommand Register
+        {
+            get
+            {
+                return _Register ??= new RelayCommand(OnGoRegister, CanGoRegister);
+            }
+        }
+
+        private bool CanGoRegister()
+        {
+            return true;
+        }
+        private void OnGoRegister()
+        {
+            _MainCodeBehind.LoadWiew(View_number.Login);
+        }
+
+        // Добавление обработки кнопок
+        ///<summary>
+        /// Добавление обработки кнопки логина
+        /// </summary>
+        private string _InputLogin;
+        public string InputLogin
+        {
+            get { return _InputLogin; }
+            set 
+            { 
+                _InputLogin = value;
+                Customer.Login = _InputLogin;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputLogin)));
+            }
+        }
+        ///<summary>
+        /// Добавление обработки кнопки логина
+        /// </summary>
+        private string _InputPassword;
+        public string InputPassword
+        {
+            get { return _InputPassword; }
+            set
+            {
+                _InputPassword = value;
+                Customer.Password = _InputPassword;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputPassword)));
+            }
+        }
+        ///<summary>
+        /// Добавление обработки уровня доступа
+        /// </summary>
+        private bool _Client_1;
+        public bool Client_1
+        {
+            get { return _Client_1; }
+            set
+            {
+                _Client_1 = value;
+                if (value)
+                    Customer.AccountType = User.TypeOfAccount.Client;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_1)));
+            }
+        }
+        private bool _Client_2;
+        public bool Client_2
+        {
+            get { return _Client_2; }
+            set
+            {
+                _Client_2 = value;
+                if (value)
+                    Customer.AccountType = User.TypeOfAccount.Clerk;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_2)));
+            }
+        }
+        private bool _Client_3;
+        public bool Client_3
+        {
+            get { return _Client_3; }
+            set
+            {
+                _Client_3 = value;
+                if (value)
+                    Customer.AccountType = User.TypeOfAccount.Master;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_3)));
+            }
+        }
+        private bool _Client_4;
+        public bool Client_4
+        {
+            get { return _Client_4; }
+            set
+            {
+                _Client_4 = value;
+                if (value)
+                    Customer.AccountType = User.TypeOfAccount.Moderator;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_4)));
+            }
         }
 
     }
