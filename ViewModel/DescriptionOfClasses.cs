@@ -18,6 +18,20 @@ namespace Cursovoy_project.ViewModel
             get { return _Password ?? "Not set"; }
             set { _Password = value; }
         }
+
+        private bool _SendToDatabase = false;
+        public bool SendToDatabase
+        {
+            get { return _SendToDatabase; }
+            set { _SendToDatabase = value; }
+        }
+
+        private bool _GetFromDatabase = false;
+        public bool GetFromDatabase
+        {
+            get { return _GetFromDatabase; }
+            set { _GetFromDatabase = value; }
+        }
     }
     class User_content
     {
@@ -48,6 +62,20 @@ namespace Cursovoy_project.ViewModel
             get { return _DateBirth ?? "Not set"; }
             set { _DateBirth = value; }
         }
+
+        private bool _SendToDatabase = false;
+        public bool SendToDatabase
+        {
+            get { return _SendToDatabase; }
+            set { _SendToDatabase = value; }
+        }
+
+        private bool _GetFromDatabase = false;
+        public bool GetFromDatabase
+        {
+            get { return _GetFromDatabase; }
+            set { _GetFromDatabase = value; }
+        }
     }
     class Car_info
     {
@@ -70,6 +98,20 @@ namespace Cursovoy_project.ViewModel
         {
             get { return _CarBrand ?? "Not set"; }
             set { _CarBrand = value; }
+        }
+
+        private bool _SendToDatabase = false;
+        public bool SendToDatabase
+        {
+            get { return _SendToDatabase; }
+            set { _SendToDatabase = value; }
+        }
+
+        private bool _GetFromDatabase = false;
+        public bool GetFromDatabase
+        {
+            get { return _GetFromDatabase; }
+            set { _GetFromDatabase = value; }
         }
     }
     class DescriptionOfClasses
