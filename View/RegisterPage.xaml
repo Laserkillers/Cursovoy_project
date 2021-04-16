@@ -3,8 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Cursovoy_project.View"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:Cursovoy_project.View" 
+      xmlns:components="clr-namespace:Cursovoy_project.Components"
+             mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="600">
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
@@ -62,56 +63,55 @@
                    FontSize="14" Foreground="White" Margin="15 0 0 0">
                 Выберите тип учётной записи
             </TextBlock>
-            <RadioButton Margin="15 5 0 0" GroupName="Access" Content="Клиент сервиса" Foreground="White" IsChecked="True"/>
-            <RadioButton Margin="15 5 0 0" GroupName="Access" Content="Бухгалтер" Foreground="White"/>
-            <RadioButton Margin="15 5 0 0" GroupName="Access" Content="Мастер-приёмщик" Foreground="White"/>
-            <RadioButton Margin="15 5 0 0" GroupName="Access" Content="Модератор" Foreground="White"/>
-            <RadioButton Margin="15 5 0 0" GroupName="Access" Content="Администратор" Foreground="White"/>
+            <RadioButton IsChecked="{Binding Client_1, Mode=TwoWay}" Margin="15 5 0 0" GroupName="Access" Content="Клиент сервиса" Foreground="White"/>
+            <RadioButton IsChecked="{Binding Client_2, Mode=TwoWay}" Margin="15 5 0 0" GroupName="Access" Content="Бухгалтер" Foreground="White"/>
+            <RadioButton IsChecked="{Binding Client_3, Mode=TwoWay}" Margin="15 5 0 0" GroupName="Access" Content="Мастер-приёмщик" Foreground="White"/>
+            <RadioButton IsChecked="{Binding Client_4, Mode=TwoWay}" Margin="15 5 0 0" GroupName="Access" Content="Модератор" Foreground="White"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
+            <TextBlock x:Name="LoginBox" HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="5 0 0 0">
                 Введите логин
             </TextBlock>
-            <TextBox Margin="0 5 0 0"
+            <TextBox Margin="0 5 0 0" Text="{Binding InputLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="5 0 0 0">
                 Введите пароль
             </TextBlock>
-            <PasswordBox Margin="0 5 0 0"
+            <components:BindablePasswordBox Margin="0 5 0 0" Password="{Binding InputPassword,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
-            </PasswordBox>
+            </components:BindablePasswordBox>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="0">
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="15 0 0 0">
                 Введите Фамилию
             </TextBlock>
-            <TextBox Margin="15 5 0 0"
+            <TextBox Margin="15 5 0 0" x:Name="Surname_box"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="15 0 0 0">
                 Введите Имя
             </TextBlock>
-            <TextBox Margin="15 5 0 0"
+            <TextBox Margin="15 5 0 0" x:Name="Name_box"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="15 0 0 0">
                 Введите Отчество
             </TextBlock>
-            <TextBox Margin="15 5 0 0"
+            <TextBox Margin="15 5 0 0" x:Name="Middlename_box"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="15 0 0 0">
                 Введите дату рождения
             </TextBlock>
-            <DatePicker Margin="15 5 0 0" Width="150" HorizontalAlignment="Left" 
-                Name="datePicker1" SelectedDateFormat="Short" />
+            <DatePicker x:Name="DateBox" Margin="15 5 0 0" Width="150" HorizontalAlignment="Left" 
+                 SelectedDateFormat="Short" />
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
@@ -123,21 +123,21 @@
                    FontSize="14" Foreground="White" Margin="5 0 0 0">
                 Введите госномер
             </TextBlock>
-            <TextBox Margin="0 5 0 0"
+            <TextBox Margin="0 5 0 0" x:Name="GosNumberBox"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="5 0 0 0">
                 Введите марку
             </TextBlock>
-            <TextBox Margin="0 5 0 0"
+            <TextBox Margin="0 5 0 0" x:Name="CarBrandBox"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
                    FontSize="14" Foreground="White" Margin="5 0 0 0">
                 Введите модель
             </TextBlock>
-            <TextBox Margin="0 5 0 0"
+            <TextBox Margin="0 5 0 0" x:Name="CarModelBox"
                      Height="25" Width="150" HorizontalAlignment="Left" FontSize="15" >
             </TextBox>
         </StackPanel>
