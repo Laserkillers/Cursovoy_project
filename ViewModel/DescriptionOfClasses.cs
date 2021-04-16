@@ -6,9 +6,10 @@ namespace Cursovoy_project.ViewModel
 {
     class User
     {
+        public User() { }
         public enum TypeOfAccount
         {
-            Administrator,
+            Master,
             Moderator,
             Clerk,
             Client
@@ -42,6 +43,7 @@ namespace Cursovoy_project.ViewModel
     }
     class User_content
     {
+        public User_content() { }
         private string _Surname = "Not set";
         public string Surname
         {
@@ -86,6 +88,7 @@ namespace Cursovoy_project.ViewModel
     }
     class Car_info
     {
+        public Car_info() { }
         private string _GosNumber = "Not set";
         public string GosNumber
         {
