@@ -19,18 +19,11 @@ namespace Cursovoy_project.ViewModel
             set { _Password = value; }
         }
 
-        private bool _SendToDatabase = false;
-        public bool SendToDatabase
+        private bool _Validated = false;
+        public bool Validated
         {
-            get { return _SendToDatabase; }
-            set { _SendToDatabase = value; }
-        }
-
-        private bool _GetFromDatabase = false;
-        public bool GetFromDatabase
-        {
-            get { return _GetFromDatabase; }
-            set { _GetFromDatabase = value; }
+            get { return _Validated; }
+            set { _Validated = value; }
         }
     }
     class User_content
