@@ -25,7 +25,8 @@ namespace Cursovoy_project
     {
         Main,
         Login,
-        Register
+        Register,
+        UserInterface
     }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -70,6 +71,8 @@ namespace Cursovoy_project
                     RegisterPageViewModel viewModelR = new RegisterPageViewModel(this);
                     viewR.DataContext = viewModelR;
                     this.OutputView.Content = viewR;
+                    break;
+                case View_number.UserInterface:
                     break;
                 default:
                     break;
