@@ -6,6 +6,21 @@ namespace Cursovoy_project.ViewModel
 {
     class User
     {
+        public enum TypeOfAccount
+        {
+            Administrator,
+            Moderator,
+            Clerk,
+            Client
+        }
+
+        private TypeOfAccount _AccountType = TypeOfAccount.Client;
+        public TypeOfAccount AccountType
+        {
+            get { return _AccountType; }
+            set { _AccountType = value; }
+        }
+
         private string _Login;
         public string Login
         {
@@ -18,7 +33,6 @@ namespace Cursovoy_project.ViewModel
             get { return _Password ?? "Not set"; }
             set { _Password = value; }
         }
-
         private bool _Validated = false;
         public bool Validated
         {
