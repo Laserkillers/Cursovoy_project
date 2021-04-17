@@ -3,11 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Cursovoy_project.View"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:Cursovoy_project.View" 
+      xmlns:components="clr-namespace:Cursovoy_project.Components"
+             mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="600">
     <StackPanel>
-        <TextBlock TextAlignment="Center" Margin="0 70 0 0" 
+        <TextBlock TextAlignment="Center" Margin="0 40 0 0" 
                    FontSize="22" Foreground="White"> Добро пожаловать 
             <LineBreak/> в автосервис!
         </TextBlock>
@@ -28,14 +29,36 @@
         </Button>
         <TextBlock  TextAlignment="Center" Margin="0 15 0 0" 
                     FontSize="22" Foreground="White">Вход</TextBlock>
-        <TextBox x:Name="TextBox_login"  HorizontalAlignment="Center"
-                 VerticalAlignment="Center" TextAlignment="Left"
-                 FontSize="13" Width="120" Height="25" Opacity="0.3"
-                 Margin="0 30 0 0">Логин</TextBox>
-        <TextBox x:Name="TextBox_password" 
-                 HorizontalAlignment="Center" VerticalAlignment="Center" 
-                 TextAlignment="Left" FontSize="13" Width="120" Height="25"  
-                 Opacity="0.3" Margin="0 5 0 0">Пароль</TextBox>
+        <TextBlock  TextAlignment="Center" Margin="0 15 0 0" 
+                    FontSize="22" Foreground="White">Логин</TextBlock>
+        <TextBlock TextAlignment="Center" 
+                   Foreground="White">
+            Логин должен содержать не менее 2-х символов и не более 20-и <LineBreak/>
+            первый символ обязательно буква
+        </TextBlock>
+
+        <TextBox x:Name="Login_box_LP"
+                GotFocus="TextBox_login_GotFocus" LostFocus="TextBox_login_LostFocus" 
+                HorizontalAlignment="Center" 
+                Text="{Binding InputLoginLP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                VerticalAlignment="Center" TextAlignment="Left"
+                FontSize="13" Width="120" Height="25"
+                Margin="0 5 0 0">
+        </TextBox>
+        <TextBlock  TextAlignment="Center" 
+                    FontSize="22" Foreground="White">Пароль</TextBlock>
+        <TextBlock TextAlignment="Center"
+                Foreground="White">
+            Пароль должен содержать не менее 6-и символов<LineBreak/>
+            может содержать строчные и прописные латинские буквы, цифры, спецсимволы
+        </TextBlock>
+        <components:BindablePasswordBox x:Name="PassBox" Margin="0 5 0 0" Password="{Binding InputPasswordLP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            HorizontalAlignment="Center" 
+            LostFocus="BindablePasswordBox_LostFocus"
+            VerticalAlignment="Center"
+            Width="120" Height="25">
+
+        </components:BindablePasswordBox>
         <Button x:Name="Button_sing_in" HorizontalAlignment="Center" 
                 Height="30" Width="90" 
                 VerticalAlignment="Center" Content="Войти" 

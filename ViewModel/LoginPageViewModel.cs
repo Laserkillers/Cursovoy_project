@@ -10,6 +10,8 @@ namespace Cursovoy_project.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public LoginPageViewModel() { }
 
+        private User Customer = new User();
+
         private IMainWindowsCodeBehind _MainCodeBehind;
 
         public LoginPageViewModel(IMainWindowsCodeBehind codeBehind)
@@ -18,6 +20,9 @@ namespace Cursovoy_project.ViewModel
 
             _MainCodeBehind = codeBehind;
         }
+        /// <summary>
+        /// Добавление обработки кнопки зарегистрироваться
+        /// </summary>
 
         private RelayCommand _GoToRegisterPage;
         public RelayCommand GoToRegisterPage
@@ -34,6 +39,36 @@ namespace Cursovoy_project.ViewModel
         private void OnGoRegisterPage()
         {
             _MainCodeBehind.LoadWiew(View_number.Register);
+        }
+        
+        /// <summary>
+        /// Добавление обработки текст бокса для логина
+        /// </summary>
+        private string _InputLoginLP = "Логин";
+        public string InputLoginLP
+        {
+            get { return _InputLoginLP; }
+            set
+            {
+                _InputLoginLP = value;
+                Customer.Login = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputLoginLP)));
+            }
+        }
+
+        /// <summary>
+        /// Добавление обработки пассворд бокса
+        /// </summary>
+        private string _InputPasswordLP;
+        public string InputPasswordLP
+        {
+            get { return _InputPasswordLP; }
+            set
+            {
+                _InputPasswordLP = value;
+                Customer.Password = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputPasswordLP)));
+            }
         }
     }
 }
