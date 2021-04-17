@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Cursovoy_project.View.ClerkPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovoy_project.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   FontSize="25" Foreground="White" TextWrapping="Wrap"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+            >
+            Просмотр сводной ведомости за выбранный период <LineBreak/>
+            Выберите отчетный период
+        </TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
+                       FontSize="19" Foreground="White" TextWrapping="Wrap"
+                       Margin="15 0 0 0">
+                    Введите дату начала отчетного периода:
+            </TextBlock>
+            <DatePicker
+                x:Name="DateInBox" Margin="15 5 0 0" 
+                Width="150" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" SelectedDateFormat="Short" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
+                       FontSize="19" Foreground="White" TextWrapping="Wrap"
+                       Margin="15 0 0 0">
+                    Введите дату конца отчетного периода:
+            </TextBlock>
+            <DatePicker Grid.Row="1"
+                x:Name="DateOutBox" Margin="15 5 0 0" 
+                Width="150" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" SelectedDateFormat="Short" />
+        </StackPanel>
+        <Button Grid.Column="0" Grid.Row="2" Width="120" Height="30"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Content="Выполнить" FontFamily="Verdana" Margin="0 9 0 0"
+                Foreground="#ecf0f1" Background="#34495e"
+                Command="{Binding DateFirstUpdate, Mode=TwoWay}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="5"
+            AutoGenerateColumns="False" x:Name="phonesGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding GosNumber}" Header="Гос номер авто" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Company}" Header="Неисправность" Width="230"/>
+                <DataGridTextColumn Binding="{Binding Price}" Header="Стоимость услуг" Width="110"/>
+                <DataGridTextColumn Binding="{Binding DateEscape}" Header="Дата оказания услуг" Width="130"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock 
+                   FontSize="25" Foreground="White">
+            Итого:
+            </TextBlock>
+            <TextBlock Text="{Binding Sum}"
+                       FontSize="25" Foreground="White"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

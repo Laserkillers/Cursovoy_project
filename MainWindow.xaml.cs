@@ -26,7 +26,7 @@ namespace Cursovoy_project
         Main,
         Login,
         Register,
-        UserInterface
+        ClerkInterface // Надо переделать на UserInterface
     }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -72,7 +72,11 @@ namespace Cursovoy_project
                     viewR.DataContext = viewModelR;
                     this.OutputView.Content = viewR;
                     break;
-                case View_number.UserInterface:
+                case View_number.ClerkInterface:
+                    ClerkPage viewC = new ClerkPage();
+                    ClerkPageViewModel viewModelC = new ClerkPageViewModel(this);
+                    viewC.DataContext = viewModelC;
+                    this.OutputView.Content = viewC;
                     break;
                 default:
                     break;
