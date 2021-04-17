@@ -136,6 +136,5 @@ namespace Cursovoy_project.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_4)));
             }
         }
-
     }
 }
