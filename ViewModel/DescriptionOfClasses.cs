@@ -9,6 +9,7 @@ namespace Cursovoy_project.ViewModel
         public User() { }
         public enum TypeOfAccount
         {
+            Admin,
             Master,
             Moderator,
             Clerk,
