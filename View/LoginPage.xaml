@@ -60,7 +60,7 @@
 
         </components:BindablePasswordBox>
         <Button x:Name="Button_sing_in" HorizontalAlignment="Center" 
-                Height="30" Width="90" 
+                Height="30" Width="90" Command="{Binding GoToUserInterface}"
                 VerticalAlignment="Center" Content="Войти" 
                 FontFamily="Verdana" Foreground="#ecf0f1" Background="#34495e"
                 Margin="0 25 0 0" FontSize="15">

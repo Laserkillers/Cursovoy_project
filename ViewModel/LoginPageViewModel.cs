@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using Npgsql;
+using System.Data.Common;
 
 namespace Cursovoy_project.ViewModel
 {
@@ -9,6 +11,8 @@ namespace Cursovoy_project.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public LoginPageViewModel() { }
+
+        private readonly string connectionString = "Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;";
 
         private User Customer = new User();
 
@@ -69,6 +73,32 @@ namespace Cursovoy_project.ViewModel
                 Customer.Password = value;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputPasswordLP)));
             }
+        }
+
+        private RelayCommand _GoToUserInterface;
+        public RelayCommand GoToUserInterface
+        {
+            get { return _GoToUserInterface ?? new RelayCommand(OnGoToUserInterface, CanGoToUserInterface); }
+        }
+
+        private bool CanGoToUserInterface()
+        {
+            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(connectionString);
+            try
+            {
+                npgsqlConnection.Open();
+                string sqlcommand = "Select * FROM users Where ";
+                sqlcommand += Customer.Login;
+            }
+            catch (Exception)
+            {
+            }
+            return true;
+        }
+
+        private void OnGoToUserInterface()
+        {
+
         }
     }
 }
