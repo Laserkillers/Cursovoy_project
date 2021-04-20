@@ -12,7 +12,7 @@ namespace Cursovoy_project.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public LoginPageViewModel() { }
 
-        private readonly string connectionString = "Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;";
+        private static string connectionString = "Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;";
 
         private User Customer = new User();
 
@@ -74,31 +74,49 @@ namespace Cursovoy_project.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputPasswordLP)));
             }
         }
-
+        private bool init_button = false;
         private RelayCommand _GoToUserInterface;
         public RelayCommand GoToUserInterface
         {
-            get { return _GoToUserInterface ?? new RelayCommand(OnGoToUserInterface, CanGoToUserInterface); }
+            get { return _GoToUserInterface = _GoToUserInterface ?? new RelayCommand(OnGoToUserInterface, CanGoToUserInterface); }
         }
-
+        
         private bool CanGoToUserInterface()
         {
+            if (!init_button)
+            {
+                init_button = true;
+                return true;
+            }
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(connectionString);
             try
             {
                 npgsqlConnection.Open();
-                string sqlcommand = "Select * FROM users Where ";
-                sqlcommand += Customer.Login;
+                string sqlcommand = "Select login, password FROM users Where login = '";
+                sqlcommand += Customer.Login + "' and password = '" + Customer.Password + "';";
+                NpgsqlCommand npgsqlCommand = new NpgsqlCommand(sqlcommand, npgsqlConnection);
+                NpgsqlDataReader dataReader = npgsqlCommand.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    npgsqlConnection.Close();
+                    return true;
+                }
+                else
+                {
+                    npgsqlConnection.Close();
+                    return false;
+                }
             }
             catch (Exception)
             {
+                npgsqlConnection.Close();
+                return false;
             }
-            return true;
         }
-
+        
         private void OnGoToUserInterface()
         {
-
+            _MainCodeBehind.LoadWiew(View_number.ClerkInterface);
         }
     }
 }
