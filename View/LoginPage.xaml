@@ -52,7 +52,8 @@
             Пароль должен содержать не менее 6-и символов<LineBreak/>
             может содержать строчные и прописные латинские буквы, цифры, спецсимволы
         </TextBlock>
-        <components:BindablePasswordBox x:Name="PassBox" Margin="0 5 0 0" Password="{Binding InputPasswordLP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        <components:BindablePasswordBox 
+            x:Name="PassBox" Margin="0 5 0 0" Password="{Binding InputPasswordLP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             HorizontalAlignment="Center" 
             LostFocus="BindablePasswordBox_LostFocus"
             VerticalAlignment="Center"
