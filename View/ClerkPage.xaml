@@ -33,6 +33,7 @@
             </TextBlock>
             <DatePicker
                 x:Name="DateInBox" Margin="15 5 0 0" 
+                SelectedDateChanged="DateInBox_SelectedDateChanged"
                 Width="150" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" SelectedDateFormat="Short" />
         </StackPanel>
@@ -42,7 +43,7 @@
                        Margin="15 0 0 0">
                     Введите дату конца отчетного периода:
             </TextBlock>
-            <DatePicker Grid.Row="1"
+            <DatePicker Grid.Row="1" SelectedDateChanged="DateOutBox_SelectedDateChanged"
                 x:Name="DateOutBox" Margin="15 5 0 0" 
                 Width="150" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" SelectedDateFormat="Short" />
@@ -52,7 +53,7 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Content="Выполнить" FontFamily="Verdana" Margin="0 9 0 0"
                 Foreground="#ecf0f1" Background="#34495e"
-                Command="{Binding DateFirstUpdate, Mode=TwoWay}">
+                Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -60,12 +61,12 @@
             </Button.Resources>
         </Button>
         <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="5"
-            AutoGenerateColumns="False" x:Name="phonesGrid">
+            AutoGenerateColumns="False" x:Name="autoserviceInfoGrid">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding GosNumber}" Header="Гос номер авто" Width="120"/>
-                <DataGridTextColumn Binding="{Binding Company}" Header="Неисправность" Width="230"/>
-                <DataGridTextColumn Binding="{Binding Price}" Header="Стоимость услуг" Width="110"/>
-                <DataGridTextColumn Binding="{Binding DateEscape}" Header="Дата оказания услуг" Width="130"/>
+                <DataGridTextColumn Binding="{Binding Fault}" Header="Неисправность" Width="180"/>
+                <DataGridTextColumn Binding="{Binding Cost}" Header="Стоимость услуг" Width="110"/>
+                <DataGridTextColumn Binding="{Binding IssureTime}" Header="Дата оказания услуг" Width="130"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
@@ -73,7 +74,7 @@
                    FontSize="25" Foreground="White">
             Итого:
             </TextBlock>
-            <TextBlock Text="{Binding Sum}"
+            <TextBlock Text=" 0 р." x:Name="SumOfServices"
                        FontSize="25" Foreground="White"></TextBlock>
         </StackPanel>
     </Grid>
