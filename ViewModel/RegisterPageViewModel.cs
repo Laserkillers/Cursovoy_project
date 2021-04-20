@@ -72,7 +72,7 @@ namespace Cursovoy_project.ViewModel
             }
         }
         ///<summary>
-        /// Добавление обработки кнопки логина
+        /// Добавление обработки кнопки пароля
         /// </summary>
         private string _InputPassword;
         public string InputPassword
