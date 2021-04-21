@@ -115,7 +115,10 @@ namespace Cursovoy_project
             switch (typeView)
             {
                 case Clerk_view_number.Main:
-
+                    ClerkStartPage viewM = new ClerkStartPage();
+                    ClerkStartPageViewModel viewModelM = new ClerkStartPageViewModel(this);
+                    viewM.DataContext = viewModelM;
+                    this.OutputView.Content = viewM;
                     break;
                 case Clerk_view_number.Profile:
                     break;
@@ -173,7 +176,7 @@ namespace Cursovoy_project
         private void BackGroundClerk()
         {
             LinearGradientBrush gradient = new LinearGradientBrush();
-            gradient.GradientStops.Add(SetPartGradient(60, 172, 220, 1.0));
+            gradient.GradientStops.Add(SetPartGradient(84, 106, 123, 1.0));
             this.Background = gradient;
         }
         private void BackGroundMain()
