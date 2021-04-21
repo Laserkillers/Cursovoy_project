@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Cursovoy_project.View"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600">
-    <Grid IsEnabled="False">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -16,12 +16,12 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0"
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0 25 0 0"
                     Grid.ColumnSpan="2">
             <TextBlock Foreground="White" FontSize="25"
                            TextAlignment="Center">
                     Добро пожаловать, Бухгалтер! <LineBreak/>
-                    Выберите, пожалуйста, действие:
+                    Выберите действие:
             </TextBlock>
         </StackPanel>
         
@@ -29,7 +29,7 @@
                 Height="80" Width="270"
                 Command="{Binding GoToRecieveData}"
                 Content="Перейти к расчетной ведомости"
-                Background="Black"
+                Background="#9EA3B0" Foreground="#0D1F2D"
                 FontSize="17">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -40,7 +40,7 @@
         <Button Grid.Column="1" Grid.Row="1"
                 Height="80" Width="270"
                 Content="Перейти к настройкам профиля"
-                Background="#34495e"
+                Background="#9EA3B0" Foreground="#0D1F2D"
                 FontSize="17">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -52,7 +52,7 @@
                 Height="80" Width="270"
                 Content="Выйти на страницу авторизации"
                 Command="{Binding GoToLoginPage}"
-                Background="#34495e"
+                Background="#9EA3B0" Foreground="#0D1F2D"
                 FontSize="17">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -64,7 +64,7 @@
                 Height="80" Width="270"
                 Content="Выйти из программы"
                 Command="{Binding Close}"
-                Background="#34495e"
+                Background="#9EA3B0" Foreground="#0D1F2D"
                 FontSize="17">
             <Button.Resources>
                 <Style TargetType="Border">

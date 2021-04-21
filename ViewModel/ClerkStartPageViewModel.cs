@@ -46,5 +46,22 @@ namespace Cursovoy_project.ViewModel
         {
             return true;
         }
+        private RelayCommand _GoToLoginPage;
+        public RelayCommand GoToLoginPage
+        {
+            get
+            {
+                return _GoToLoginPage = _GoToLoginPage ?? new RelayCommand(OnGoToLoginPage, CanGoToLoginPage);
+            }
+        }
+        private bool CanGoToLoginPage()
+        {
+            return true;
+        }
+        private void OnGoToLoginPage()
+        {
+            _MainCodeBehind.Change_Background(Background_set.Main);
+            _MainCodeBehind.LoadWiew(View_number.Login);
+        }
     }
 }
