@@ -54,8 +54,8 @@ namespace Cursovoy_project.View
 
         private void BindablePasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if /*(*/(PassBox.Password == "") /*|| (Check_Correct_Password())) */
-                MessageBox.Show("Неверно введён пароль!");
+            if (PassBox.Password == "") 
+                MessageBox.Show("Отсутствует пароль!");
         }
         private bool Check_Correct_Password()
         {
