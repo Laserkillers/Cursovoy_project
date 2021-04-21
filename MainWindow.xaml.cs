@@ -19,14 +19,37 @@ namespace Cursovoy_project
 {
     public interface IMainWindowsCodeBehind
     {
+        void ClosePage();
+        void Change_Background(Background_set background);
+        void LoadClerksPage(Clerk_view_number typeView);
         void LoadWiew(View_number typeView);
     }
+    /// <summary>
+    /// Стартовая навигация
+    /// </summary>
     public enum View_number
     {
         Main,
         Login,
-        Register,
-        ClerkInterface // Надо переделать на UserInterface
+        Register 
+    }
+    /// <summary>
+    /// Навигация для Бухгалтера
+    /// </summary>
+    public enum Clerk_view_number
+    {
+        Main,
+        Profile,
+        Receive_Data
+    }
+    public enum Background_set
+    {
+        Main,
+        Clerk,
+        Admin,
+        Moderator,
+        Client,
+        Master
     }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -47,6 +70,13 @@ namespace Cursovoy_project
             LoadWiew(View_number.Main);
         }
 
+        public void ClosePage()
+        {this.Close();}
+
+        /// <summary>
+        /// Загрузка основных страниц
+        /// </summary>
+        /// <param name="typeView"></param>
         public void LoadWiew(View_number typeView)
         {
             switch (typeView)
@@ -72,15 +102,87 @@ namespace Cursovoy_project
                     viewR.DataContext = viewModelR;
                     this.OutputView.Content = viewR;
                     break;
-                case View_number.ClerkInterface:
-                    ClerkPage viewC = new ClerkPage();
-                    ClerkPageViewModel viewModelC = new ClerkPageViewModel(this);
-                    viewC.DataContext = viewModelC;
-                    this.OutputView.Content = viewC;
+                default:
+                    break;
+            }
+        }
+        /// <summary>
+        /// Загрузка страниц Бухгалтера
+        /// </summary>
+        /// <param name="typeView"></param>
+        public void LoadClerksPage(Clerk_view_number typeView)
+        {
+            switch (typeView)
+            {
+                case Clerk_view_number.Main:
+
+                    break;
+                case Clerk_view_number.Profile:
+                    break;
+                case Clerk_view_number.Receive_Data:
+                    ClerkPage viewRD = new ClerkPage();
+                    ClerkPageViewModel viewModelRD = new ClerkPageViewModel(this);
+                    viewRD.DataContext = viewModelRD;
+                    this.OutputView.Content = viewRD;
                     break;
                 default:
                     break;
             }
+        }
+        /// <summary>
+        /// Установка заднего фона для каждой страницы
+        /// </summary>
+        /// <param name="background"></param>
+        public void Change_Background(Background_set background)
+        {
+            switch (background)
+            {
+                case Background_set.Main:
+                    BackGroundMain();
+                    break;
+                case Background_set.Clerk:
+                    BackGroundClerk();
+                    break;
+                case Background_set.Admin:
+                    break;
+                case Background_set.Moderator:
+                    break;
+                case Background_set.Client:
+                    break;
+                case Background_set.Master:
+                    break;
+                default:
+                    break;
+            }
+        }
+        /// <summary>
+        /// Генерация элемента типа GradientStop для кситочки LinearGradientBrush 
+        /// </summary>
+        /// <param name="red">Красный</param>
+        /// <param name="green">Зеленый</param>
+        /// <param name="blue">Синий</param>
+        /// <param name="offset">Что-то</param>
+        /// <returns></returns>
+        private GradientStop SetPartGradient(int red, int green, int blue, double offset)
+        {
+            GradientStop colour = new GradientStop();
+            colour.Color = Color.FromRgb((byte)red, (byte)green, (byte)blue);
+            colour.Offset = offset;
+            return colour;
+        }
+        private void BackGroundClerk()
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.GradientStops.Add(SetPartGradient(60, 172, 220, 1.0));
+            this.Background = gradient;
+        }
+        private void BackGroundMain()
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.GradientStops.Add(SetPartGradient(10, 198, 114, 1.0));
+            gradient.GradientStops.Add(SetPartGradient(6, 77, 186, 0.5));
+            gradient.GradientStops.Add(SetPartGradient(226, 219, 5, 0.0));
+            Background = gradient;
         }
     }
 }
