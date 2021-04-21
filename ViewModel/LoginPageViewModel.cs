@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using Npgsql;
 using System.Data.Common;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Cursovoy_project.ViewModel
 {
@@ -11,6 +15,8 @@ namespace Cursovoy_project.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public LoginPageViewModel() { }
+
+        AutoServiceContext db;
 
         private static string connectionString = "Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;";
 
@@ -42,6 +48,7 @@ namespace Cursovoy_project.ViewModel
         }
         private void OnGoRegisterPage()
         {
+            _MainCodeBehind.Change_Background(Background_set.Main);
             _MainCodeBehind.LoadWiew(View_number.Register);
         }
         
@@ -116,7 +123,40 @@ namespace Cursovoy_project.ViewModel
         
         private void OnGoToUserInterface()
         {
-            _MainCodeBehind.LoadWiew(View_number.ClerkInterface);
+            db = new AutoServiceContext();
+            db.Users.Load();
+            int Check_login = db.Users.Local
+                .Select(p => (p.Login, p.Password))
+                .Where(p => ((p.Login == Customer.Login) && (p.Password == Customer.Password)))
+                .Count();
+            if (Check_login == 1)
+            {
+                int[] typeaccount = db.Users.Local
+                    .Where(p=> ((p.Login == Customer.Login) && (p.Password == Customer.Password)))
+                    .Select(p=> (p.TypeOfAccount))
+                    .ToArray();
+                
+                switch (typeaccount[0])
+                {
+                    case 0://Admin
+                        //_MainCodeBehind.Change_Background(Background_set.Clerk);
+                        _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main);
+                        break;
+                    case 1://Master
+                        break;
+                    case 2://Moderator
+                        break;
+                    case 3://Clerk
+                        _MainCodeBehind.Change_Background(Background_set.Clerk);
+                        _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main);
+                        break;
+                    case 4://Client
+                        break;
+                    default:
+                        break;
+                }
+            }
+            db.Dispose();
         }
     }
 }
