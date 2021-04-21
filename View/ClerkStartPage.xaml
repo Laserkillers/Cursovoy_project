@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Cursovoy_project.View.ClerkStartPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovoy_project.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid IsEnabled="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0"
+                    Grid.ColumnSpan="2">
+            <TextBlock Foreground="White" FontSize="25"
+                           TextAlignment="Center">
+                    Добро пожаловать, Бухгалтер! <LineBreak/>
+                    Выберите, пожалуйста, действие:
+            </TextBlock>
+        </StackPanel>
+        
+        <Button Grid.Column="0" Grid.Row="1"
+                Height="80" Width="270"
+                Command="{Binding GoToRecieveData}"
+                Content="Перейти к расчетной ведомости"
+                Background="Black"
+                FontSize="17">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="1"
+                Height="80" Width="270"
+                Content="Перейти к настройкам профиля"
+                Background="#34495e"
+                FontSize="17">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="2"
+                Height="80" Width="270"
+                Content="Выйти на страницу авторизации"
+                Command="{Binding GoToLoginPage}"
+                Background="#34495e"
+                FontSize="17">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="2"
+                Height="80" Width="270"
+                Content="Выйти из программы"
+                Command="{Binding Close}"
+                Background="#34495e"
+                FontSize="17">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</UserControl>
