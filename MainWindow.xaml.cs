@@ -51,6 +51,16 @@ namespace Cursovoy_project
         Client,
         Master
     }
+    /*
+       public enum TypeOfAccount
+        {
+            Admin, 0
+            Master, 1
+            Moderator, 2
+            Clerk, 3
+            Client 4
+        }
+    */
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
