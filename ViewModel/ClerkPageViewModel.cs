@@ -11,8 +11,6 @@ namespace Cursovoy_project.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         private IMainWindowsCodeBehind _MainCodeBehind;
-        private string FirstDate = "";
-        private string SecondDate = "";
 
         public ClerkPageViewModel(IMainWindowsCodeBehind codeBehind)
         {
