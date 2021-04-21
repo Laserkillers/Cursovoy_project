@@ -32,6 +32,7 @@ namespace Cursovoy_project.ViewModel
         }
         private void OnLoadLoginPage()
         {
+            //_StartCodeBehind.Change_Background(Background_set.Clerk);
             _StartCodeBehind.LoadWiew(View_number.Login);
         }
     }
