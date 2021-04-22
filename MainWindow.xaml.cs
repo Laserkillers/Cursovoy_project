@@ -22,6 +22,7 @@ namespace Cursovoy_project
         void ClosePage();
         void Change_Background(Background_set background);
         void LoadClerksPage(Clerk_view_number typeView);
+        void LoadClientPage(Client_Page_Load typeView, User customer);
         void LoadWiew(View_number typeView);
     }
     /// <summary>
@@ -41,6 +42,14 @@ namespace Cursovoy_project
         Main,
         Profile,
         Receive_Data
+    }
+
+    public enum Client_Page_Load
+    {
+        Main,
+        Profile,
+        EnrollCar,
+        ViewCarStatus
     }
     public enum Background_set
     {
@@ -143,6 +152,31 @@ namespace Cursovoy_project
             }
         }
         /// <summary>
+        /// Загрузка страниц клиента
+        /// </summary>
+        /// <param name="typeView"></param>
+        public void LoadClientPage(Client_Page_Load typeView, User customer)
+        {
+            switch (typeView)
+            {
+                case Client_Page_Load.Main:
+                    ClientStartPage viewC = new ClientStartPage();
+                    ClientStartPageViewModel viewModelC = new ClientStartPageViewModel(this, customer);
+                    viewC.DataContext = viewModelC;
+                    this.OutputView.Content = viewC;
+                    break;
+                case Client_Page_Load.Profile:
+                    break;
+                case Client_Page_Load.EnrollCar:
+                    break;
+                case Client_Page_Load.ViewCarStatus:
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        /// <summary>
         /// Установка заднего фона для каждой страницы
         /// </summary>
         /// <param name="background"></param>
@@ -161,6 +195,7 @@ namespace Cursovoy_project
                 case Background_set.Moderator:
                     break;
                 case Background_set.Client:
+                    BackGroundClient();
                     break;
                 case Background_set.Master:
                     break;
@@ -195,6 +230,14 @@ namespace Cursovoy_project
             gradient.GradientStops.Add(SetPartGradient(10, 198, 114, 1.0));
             gradient.GradientStops.Add(SetPartGradient(6, 77, 186, 0.5));
             gradient.GradientStops.Add(SetPartGradient(226, 219, 5, 0.0));
+            Background = gradient;
+        }
+        private void BackGroundClient()
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.GradientStops.Add(SetPartGradient(0, 31, 84, 1.0));
+            gradient.GradientStops.Add(SetPartGradient(3, 64, 120, 0.5));
+            gradient.GradientStops.Add(SetPartGradient(18, 130, 162, 0.0));
             Background = gradient;
         }
     }
