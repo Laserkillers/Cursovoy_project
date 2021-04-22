@@ -131,16 +131,22 @@ namespace Cursovoy_project.ViewModel
                 .Count();
             if (Check_login == 1)
             {
-                int[] typeaccount = db.Users.Local
-                    .Where(p=> ((p.Login == Customer.Login) && (p.Password == Customer.Password)))
-                    .Select(p=> (p.TypeOfAccount))
-                    .ToArray();
-                
-                switch (typeaccount[0])
+                var users = db.Users.ToList();
+                foreach(User u in users)
+                {
+                    if ((u.Login == Customer.Login)&&(u.Password == Customer.Password))
+                    {
+                        Customer.Id = u.Id;
+                        Customer.TypeOfAccount = u.TypeOfAccount;
+                        break;
+                    }
+                }
+               
+                switch (Customer.TypeOfAccount)
                 {
                     case 0://Admin
-                        //_MainCodeBehind.Change_Background(Background_set.Clerk);
-                        _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main);
+                        _MainCodeBehind.Change_Background(Background_set.Client);
+                        _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
                         break;
                     case 1://Master
                         break;
@@ -151,6 +157,8 @@ namespace Cursovoy_project.ViewModel
                         _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main);
                         break;
                     case 4://Client
+                        _MainCodeBehind.Change_Background(Background_set.Client);
+                        _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
                         break;
                     default:
                         break;

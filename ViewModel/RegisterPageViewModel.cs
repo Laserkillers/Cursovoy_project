@@ -88,6 +88,17 @@ namespace Cursovoy_project.ViewModel
         ///<summary>
         /// Добавление обработки уровня доступа
         /// </summary>
+ 
+        /*
+        public enum TypeOfAccount
+        {
+            Admin, 0
+            Master, 1
+            Moderator, 2
+            Clerk, 3
+            Client 4
+        }
+        */
         private bool _Client_1;
         public bool Client_1
         {
@@ -96,7 +107,7 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_1 = value;
                 if (value)
-                    Customer.AccountType = User.TypeOfAccount.Client;
+                    Customer.TypeOfAccount = 4;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_1)));
             }
         }
@@ -108,7 +119,7 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_2 = value;
                 if (value)
-                    Customer.AccountType = User.TypeOfAccount.Clerk;
+                    Customer.TypeOfAccount = 3;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_2)));
             }
         }
@@ -120,7 +131,7 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_3 = value;
                 if (value)
-                    Customer.AccountType = User.TypeOfAccount.Master;
+                    Customer.TypeOfAccount = 1;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_3)));
             }
         }
@@ -132,7 +143,7 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_4 = value;
                 if (value)
-                    Customer.AccountType = User.TypeOfAccount.Moderator;
+                    Customer.TypeOfAccount = 2;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_4)));
             }
         }
