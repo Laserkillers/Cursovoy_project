@@ -168,6 +168,10 @@ namespace Cursovoy_project
                 case Client_Page_Load.Profile:
                     break;
                 case Client_Page_Load.EnrollCar:
+                    EnrollCarPage viewE = new EnrollCarPage(customer);
+                    EnrollCarPageViewModel viewModelE = new EnrollCarPageViewModel(this, customer);
+                    viewE.DataContext = viewModelE;
+                    this.OutputView.Content = viewE;
                     break;
                 case Client_Page_Load.ViewCarStatus:
                     break;
