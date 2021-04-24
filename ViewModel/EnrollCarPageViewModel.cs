@@ -43,10 +43,7 @@ namespace Cursovoy_project.ViewModel
         public List<TimeSpan> ListOfTimes
         {
             get { return _ListOfTimes; }
-            set
-            {
-                _ListOfTimes = value;
-            }
+            set {_ListOfTimes = value;}
         }
         /// <summary>
         /// Создаёт список данных на основе выбора даты пользователем
@@ -75,7 +72,21 @@ namespace Cursovoy_project.ViewModel
             db.Dispose();
             return list;
         }
-
-        
+        /// <summary>
+        /// Комманда отвечающая за возращение назад на главную страницу
+        /// </summary>
+        private RelayCommand _GoToClientStartPage;
+        public RelayCommand GoToClientStartPage
+        {
+            get { return _GoToClientStartPage ??= new RelayCommand(OnGoToClientStartPage, CanGoToClientStartPage); }
+        }
+        private bool CanGoToClientStartPage()
+        {
+            return true;
+        }
+        private void OnGoToClientStartPage()
+        {
+            _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
+        }
     }
 }
