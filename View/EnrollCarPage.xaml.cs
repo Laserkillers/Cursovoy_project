@@ -15,6 +15,10 @@ using System.Windows.Shapes;
 
 namespace Cursovoy_project.View
 {
+    public interface EnrollCarPageBehind
+    {
+        void ShowMessageBox(string message);
+    }
     /// <summary>
     /// Логика взаимодействия для EnrollCarPage.xaml
     /// </summary>
@@ -24,26 +28,7 @@ namespace Cursovoy_project.View
         public EnrollCarPage(User _Customer)
         {
             InitializeComponent();
-            Customer = _Customer;
         }
-        private User Customer;
-        
-        AutoServiceContext db;
 
-        
-        /*
-         * <!--ItemsSource="{Binding SelectedItem}" -->
-        private void CreateListSpisok()
-        {
-            TimeSpan time = new TimeSpan(8, 0, 0);
-            TimeSpan add_time = new TimeSpan(1, 0, 0);
-            List<TimeSpan> list = new List<TimeSpan>() {time};
-            for (int i = 0; i <= 9; i++)
-            {
-                time.Add(add_time);
-                list.Add(time);
-            }
-        }
-        */
     }
 }
