@@ -27,7 +27,7 @@ namespace Cursovoy_project
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql("Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;");
             }
         }
@@ -74,16 +74,22 @@ namespace Cursovoy_project
             {
                 entity.ToTable("clients_car_data");
 
-                entity.HasIndex(e => e.GosNumber, "Unique_gos_number")
+                entity.HasIndex(e => e.GosNumber, "Gos")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CarBrend).HasColumnName("car_brend");
+                entity.Property(e => e.CarBrend)
+                    .IsRequired()
+                    .HasColumnName("car_brend");
 
-                entity.Property(e => e.CarModel).HasColumnName("car_model");
+                entity.Property(e => e.CarModel)
+                    .IsRequired()
+                    .HasColumnName("car_model");
 
-                entity.Property(e => e.GosNumber).HasColumnName("gos_number");
+                entity.Property(e => e.GosNumber)
+                    .IsRequired()
+                    .HasColumnName("gos_number");
 
                 entity.Property(e => e.Odometr).HasColumnName("odometr");
             });
