@@ -24,6 +24,7 @@ namespace Cursovoy_project
         void LoadClerksPage(Clerk_view_number typeView);
         void LoadClientPage(Client_Page_Load typeView, User customer);
         void LoadWiew(View_number typeView);
+        void ShowMessageBox(string message);
     }
     /// <summary>
     /// Стартовая навигация
@@ -243,6 +244,10 @@ namespace Cursovoy_project
             gradient.GradientStops.Add(SetPartGradient(3, 64, 120, 0.5));
             gradient.GradientStops.Add(SetPartGradient(18, 130, 162, 0.0));
             Background = gradient;
+        }
+        public void ShowMessageBox(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }
