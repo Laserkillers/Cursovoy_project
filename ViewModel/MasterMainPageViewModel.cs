@@ -49,5 +49,33 @@ namespace Cursovoy_project.ViewModel
             _MainCodeBehind.Change_Background(Background_set.Main);
             _MainCodeBehind.LoadWiew(View_number.Login);
         }
+
+        private RelayCommand _GoToCheckEnrolls;
+        public RelayCommand GoToCheckEnrolls
+        {
+            get { return _GoToCheckEnrolls ??= new RelayCommand(OnGoToCheckEnrolls, CanGoToCheckEnrolls); }
+        }
+        private void OnGoToCheckEnrolls()
+        {
+            _MainCodeBehind.LoadMasterPage(Master_Page_Load.ViewEnrolls, Customer);
+        }
+        private bool CanGoToCheckEnrolls()
+        {
+            return true;
+        }
+
+        private RelayCommand _GoToModifyEnroll;
+        public RelayCommand GoToModifyEnroll
+        {
+            get { return _GoToModifyEnroll ??= new RelayCommand(OnGoToModifyEnroll, CanGoToModifyEnroll); }
+        }
+        private void OnGoToModifyEnroll()
+        {
+            _MainCodeBehind.LoadMasterPage(Master_Page_Load.ChangeEnroll, Customer);
+        }
+        private bool CanGoToModifyEnroll()
+        {
+            return true;
+        }
     }
 }
