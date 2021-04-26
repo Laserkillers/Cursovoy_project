@@ -175,6 +175,10 @@ namespace Cursovoy_project
                     this.OutputView.Content = viewE;
                     break;
                 case Client_Page_Load.ViewCarStatus:
+                    StatusOfCarPage viewS = new StatusOfCarPage();
+                    StatusOfCarPageViewModel viewModelS = new StatusOfCarPageViewModel(this, customer);
+                    viewS.DataContext = viewModelS;
+                    this.OutputView.Content = viewS;
                     break;
                 default:
                     break;
