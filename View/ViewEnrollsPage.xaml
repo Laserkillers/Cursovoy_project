@@ -22,19 +22,18 @@
                    FontSize="25" Foreground="White" TextWrapping="Wrap"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
             >
-            Просмотр записей в автосервис <LineBreak/>
+            Просмотр записей в автосервисе <LineBreak/>
             Выберите дату, которую хотите посмотреть
         </TextBlock>
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                        FontSize="19" Foreground="White" TextWrapping="Wrap"
                        Margin="15 0 0 0">
-                    Введите дату:
+                    Введите дату(по умолчанию текущий день):
             </TextBlock>
             <DatePicker
                 SelectedDate="{Binding Path=SelectDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Margin="15 5 0 0" 
-                SelectedDateChanged="DateInBox_SelectedDateChanged"
                 Width="150" HorizontalAlignment="Center" 
                 VerticalAlignment="Center" SelectedDateFormat="Short" />
         </StackPanel>
@@ -62,20 +61,20 @@
             </Button.Resources>
         </Button>
         <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="5"
-            AutoGenerateColumns="False" x:Name="autoserviceInfoGrid">
+            AutoGenerateColumns="False" ItemsSource="{Binding Path=ListOfEnrolls, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding GosNumber}" Header="Гос номер авто" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Fault}" Header="Неисправность" Width="180"/>
                 <DataGridTextColumn Binding="{Binding Cost}" Header="Стоимость услуг" Width="110"/>
-                <DataGridTextColumn Binding="{Binding IssureTime}" Header="Дата оказания услуг" Width="130"/>
+                <DataGridTextColumn Binding="{Binding ReceptionTime}" Header="Дата оказания услуг" Width="130"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
             <TextBlock 
                    FontSize="25" Foreground="White">
-            Итого:
+            Итого:&#160;
             </TextBlock>
-            <TextBlock Text=" 0 р." x:Name="SumOfServices"
+            <TextBlock Text="{Binding Path=SumOfEnrolls, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                        FontSize="25" Foreground="White"></TextBlock>
         </StackPanel>
     </Grid>
