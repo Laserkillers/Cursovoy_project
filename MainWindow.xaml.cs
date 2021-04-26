@@ -198,6 +198,10 @@ namespace Cursovoy_project
             switch (typeView)
             {
                 case Master_Page_Load.Main:
+                    MasterMainPage viewM = new MasterMainPage();
+                    MasterMainPageViewModel viewModelM = new MasterMainPageViewModel(this, customer);
+                    viewM.DataContext = viewModelM;
+                    this.OutputView.Content = viewM;
                     break;
                 case Master_Page_Load.Profile:
                     break;
