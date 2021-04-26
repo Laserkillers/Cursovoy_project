@@ -206,6 +206,10 @@ namespace Cursovoy_project
                 case Master_Page_Load.Profile:
                     break;
                 case Master_Page_Load.ChangeEnroll:
+                    ModifyEnrollPage viewME = new ModifyEnrollPage();
+                    ModifyEnrollPageViewModel viewModelME = new ModifyEnrollPageViewModel(this, customer);
+                    viewME.DataContext = viewModelME;
+                    this.OutputView.Content = viewME;
                     break;
                 case Master_Page_Load.ViewEnrolls:
                     ViewEnrollsPage viewE = new ViewEnrollsPage();
