@@ -23,6 +23,7 @@ namespace Cursovoy_project
         void Change_Background(Background_set background);
         void LoadClerksPage(Clerk_view_number typeView);
         void LoadClientPage(Client_Page_Load typeView, User customer);
+        void LoadMasterPage(Master_Page_Load typeView, User customer);
         void LoadWiew(View_number typeView);
         void ShowMessageBox(string message);
     }
@@ -51,6 +52,13 @@ namespace Cursovoy_project
         Profile,
         EnrollCar,
         ViewCarStatus
+    }
+    public enum Master_Page_Load
+    {
+        Main,
+        Profile,
+        ChangeEnroll,
+        ViewEnrolls
     }
     public enum Background_set
     {
@@ -185,6 +193,22 @@ namespace Cursovoy_project
             }
 
         }
+        public void LoadMasterPage(Master_Page_Load typeView, User customer)
+        {
+            switch (typeView)
+            {
+                case Master_Page_Load.Main:
+                    break;
+                case Master_Page_Load.Profile:
+                    break;
+                case Master_Page_Load.ChangeEnroll:
+                    break;
+                case Master_Page_Load.ViewEnrolls:
+                    break;
+                default:
+                    break;
+            }
+        }
         /// <summary>
         /// Установка заднего фона для каждой страницы
         /// </summary>
@@ -207,6 +231,7 @@ namespace Cursovoy_project
                     BackGroundClient();
                     break;
                 case Background_set.Master:
+                    BackGroundMaster();
                     break;
                 default:
                     break;
@@ -247,6 +272,14 @@ namespace Cursovoy_project
             gradient.GradientStops.Add(SetPartGradient(0, 31, 84, 1.0));
             gradient.GradientStops.Add(SetPartGradient(3, 64, 120, 0.5));
             gradient.GradientStops.Add(SetPartGradient(18, 130, 162, 0.0));
+            Background = gradient;
+        }
+        private void BackGroundMaster()
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.GradientStops.Add(SetPartGradient(8, 61, 119, 1.0));
+            gradient.GradientStops.Add(SetPartGradient(224, 221, 94, 0.5));
+            gradient.GradientStops.Add(SetPartGradient(247, 135, 100, 0.0));
             Background = gradient;
         }
         public void ShowMessageBox(string message)

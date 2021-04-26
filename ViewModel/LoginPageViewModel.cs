@@ -149,6 +149,8 @@ namespace Cursovoy_project.ViewModel
                         _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
                         break;
                     case 1://Master
+                        _MainCodeBehind.Change_Background(Background_set.Master);
+                        _MainCodeBehind.LoadMasterPage(Master_Page_Load.Main, Customer);
                         break;
                     case 2://Moderator
                         break;
