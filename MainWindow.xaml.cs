@@ -281,9 +281,9 @@ namespace Cursovoy_project
         private void BackGroundMaster()
         {
             LinearGradientBrush gradient = new LinearGradientBrush();
-            gradient.GradientStops.Add(SetPartGradient(8, 61, 119, 1.0));
+            gradient.GradientStops.Add(SetPartGradient(8, 61, 119, 0.0));
             gradient.GradientStops.Add(SetPartGradient(224, 221, 94, 0.5));
-            gradient.GradientStops.Add(SetPartGradient(247, 135, 100, 0.0));
+            gradient.GradientStops.Add(SetPartGradient(247, 135, 100, 1.0));
             Background = gradient;
         }
         public void ShowMessageBox(string message)
