@@ -98,7 +98,7 @@
                 <TextBox Width="350"
                     HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                    Foreground="White"
+                   
                    FontSize="18"
     Text="{Binding Path=CarFault, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 </TextBox>
@@ -114,7 +114,7 @@
                 <TextBox Width="150"
                     HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                    Foreground="White"
+                    
                    FontSize="18"
     Text="{Binding Path=FaultsCost, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 </TextBox>
@@ -144,13 +144,13 @@
                     Время, выдачи авто: &#160;
                 </TextBlock>
                 <DatePicker Width="150"
-                    SelectedDate="{Binding Path=ReceptionTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedDate="{Binding Path=IssureDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </DatePicker>
                 <ComboBox Margin="15 0 0 0"
                 Width="150"
-                ItemsSource="{Binding ListOfCars}"
-                SelectedItem="{Binding SelectedCar}">
+                ItemsSource="{Binding ListOfTimes}"
+                SelectedItem="{Binding SelectedTime}">
 
                 </ComboBox>
             </StackPanel>
