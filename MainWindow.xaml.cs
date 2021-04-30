@@ -252,6 +252,7 @@ namespace Cursovoy_project
                 case Background_set.Admin:
                     break;
                 case Background_set.Moderator:
+                    BackGroundModerator();
                     break;
                 case Background_set.Client:
                     BackGroundClient();
@@ -322,6 +323,12 @@ namespace Cursovoy_project
             gradient.GradientStops.Add(SetPartGradient(8, 61, 119, 0.0));
             gradient.GradientStops.Add(SetPartGradient(224, 221, 94, 0.5));
             gradient.GradientStops.Add(SetPartGradient(247, 135, 100, 1.0));
+            Background = gradient;
+        }
+        private void BackGroundModerator()
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.GradientStops.Add(SetPartGradient(220, 204, 163, 1));
             Background = gradient;
         }
         public void ShowMessageBox(string message)
