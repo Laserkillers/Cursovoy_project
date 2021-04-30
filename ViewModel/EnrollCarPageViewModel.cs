@@ -232,7 +232,7 @@ namespace Cursovoy_project.ViewModel
             set
             {
                 _SelectedTime = value;
-                DateTime dateNoTime = (DateTime)ReceptionTime;
+                DateTime dateNoTime = new DateTime(Record.ReceptionTime.Year, Record.ReceptionTime.Month, Record.ReceptionTime.Day);
                 dateNoTime = dateNoTime.AddHours(_SelectedTime.Hours);
                 Record.ReceptionTime = dateNoTime;
             }
