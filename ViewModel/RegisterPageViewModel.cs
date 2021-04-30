@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
@@ -12,7 +15,8 @@ namespace Cursovoy_project.ViewModel
         private IMainWindowsCodeBehind _MainCodeBehind;
 
         private User Customer = new User();
-        //private User_content _Customer_data;
+        private UsersDatum Customer_data = new UsersDatum();
+        private AutoServiceContext db;
         
         public RegisterPageViewModel(IMainWindowsCodeBehind codeBehind)
         {
@@ -65,10 +69,10 @@ namespace Cursovoy_project.ViewModel
         {
             get { return _InputLogin; }
             set 
-            { 
+            {
                 _InputLogin = value;
                 Customer.Login = _InputLogin;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputLogin)));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(InputLogin)));
             }
         }
         ///<summary>
@@ -82,17 +86,72 @@ namespace Cursovoy_project.ViewModel
             {
                 _InputPassword = value;
                 Customer.Password = _InputPassword;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_InputPassword)));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(InputPassword)));
+            }
+        }
+        /// <summary>
+        /// Ввод фамилии
+        /// </summary>
+        private string _FamilyInput;
+        public string FamilyInput
+        {
+            get { return _FamilyInput; }
+            set
+            {
+                _FamilyInput = value;
+                Customer_data.Surname = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(FamilyInput)));
+            }
+        }
+        /// <summary>
+        /// Ввод имени
+        /// </summary>
+        private string _NameInput;
+        public string NameInput
+        {
+            get { return _NameInput;}
+            set
+            {
+                _NameInput = value;
+                Customer_data.Name = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(NameInput)));
+            }
+        }
+        /// <summary>
+        /// Ввод отчества
+        /// </summary>
+        private string _MidNameInput;
+        public string MidNameInput
+        {
+            get { return _MidNameInput; }
+            set
+            {
+                _MidNameInput = value;
+                Customer_data.MiddleName = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(MidNameInput)));
+            }
+        }
+        /// <summary>
+        /// Ввод даты рождения
+        /// </summary>
+        private DateTime? _InputDateBirth;
+        public DateTime? InputDateBirth
+        {
+            get { return _InputDateBirth; }
+            set
+            {
+                _InputDateBirth = value;
+                Customer_data.DateBirth = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(InputDateBirth)));
             }
         }
         ///<summary>
         /// Добавление обработки уровня доступа
         /// </summary>
- 
+
         /*
         public enum TypeOfAccount
         {
-            Admin, 0
             Master, 1
             Moderator, 2
             Clerk, 3
@@ -119,7 +178,7 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_2 = value;
                 if (value)
-                    Customer.TypeOfAccount = 3;
+                    Customer.TypeOfAccount = 31;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_2)));
             }
         }
@@ -131,7 +190,7 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_3 = value;
                 if (value)
-                    Customer.TypeOfAccount = 1;
+                    Customer.TypeOfAccount = 11;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_3)));
             }
         }
@@ -143,9 +202,35 @@ namespace Cursovoy_project.ViewModel
             {
                 _Client_4 = value;
                 if (value)
-                    Customer.TypeOfAccount = 2;
+                    Customer.TypeOfAccount = 21;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_4)));
             }
+        }
+        /// <summary>
+        /// Проверка логина на уникальность
+        /// </summary>
+        /// <param name="login">Проверка логина</param>
+        /// <returns>Возвращает да или нет</returns>
+        private bool CheckLogin(string login)
+        {
+            db = new AutoServiceContext();
+            db.Users.Load();
+            int temp = db.Users.Local
+                .Where(p => (p.Login == login))
+                .Count();
+            db.Dispose();
+            if (temp > 0)
+                return false;
+            return true;
+        }
+        //ДОПИСАТЬ ЛОГИКУ РЕГИСТРАЦИИ
+        private bool SendToDb()
+        {
+            if (!CheckLogin(Customer.Login)) throw new Exception("Логин не уникален! Введите другой");
+
+
+
+            return true;
         }
     }
 }
