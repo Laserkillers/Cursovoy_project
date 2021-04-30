@@ -153,6 +153,8 @@ namespace Cursovoy_project.ViewModel
                         _MainCodeBehind.LoadMasterPage(Master_Page_Load.Main, Customer);
                         break;
                     case 2://Moderator
+                        _MainCodeBehind.Change_Background(Background_set.Moderator);
+                        _MainCodeBehind.LoadModeratorPage(Moderator_Pages.Main, Customer);
                         break;
                     case 3://Clerk
                         _MainCodeBehind.Change_Background(Background_set.Clerk);
