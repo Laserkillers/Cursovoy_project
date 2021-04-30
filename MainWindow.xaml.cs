@@ -24,6 +24,7 @@ namespace Cursovoy_project
         void LoadClerksPage(Clerk_view_number typeView);
         void LoadClientPage(Client_Page_Load typeView, User customer);
         void LoadMasterPage(Master_Page_Load typeView, User customer);
+        void LoadModeratorPage(Moderator_Pages typeView, User customer);
         void LoadWiew(View_number typeView);
         void ShowMessageBox(string message);
     }
@@ -68,6 +69,14 @@ namespace Cursovoy_project
         Moderator,
         Client,
         Master
+    }
+
+    public enum Moderator_Pages
+    {
+        Main,
+        Profile,
+        AcceptAccount,
+        DeleteRows
     }
     /*
        public enum TypeOfAccount
@@ -193,6 +202,11 @@ namespace Cursovoy_project
             }
 
         }
+        /// <summary>
+        /// Загрузка страниц мастера автосервиса
+        /// </summary>
+        /// <param name="typeView"></param>
+        /// <param name="customer"></param>
         public void LoadMasterPage(Master_Page_Load typeView, User customer)
         {
             switch (typeView)
@@ -244,6 +258,22 @@ namespace Cursovoy_project
                     break;
                 case Background_set.Master:
                     BackGroundMaster();
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void LoadModeratorPage(Moderator_Pages typeView, User customer)
+        {
+            switch (typeView)
+            {
+                case Moderator_Pages.Main:
+                    break;
+                case Moderator_Pages.Profile:
+                    break;
+                case Moderator_Pages.AcceptAccount:
+                    break;
+                case Moderator_Pages.DeleteRows:
                     break;
                 default:
                     break;
