@@ -60,7 +60,7 @@ namespace Cursovoy_project.ViewModel
             try
             {
                 SendToDb();
-                _MainCodeBehind.ShowMessageBox("Вы успешно зарегистрированы!");
+                _MainCodeBehind.ShowMessageBox("Вы успешно зарегистрированы! Пожалуйста заполните свой профиль до конца");
             }
             catch (Exception e)
             {
