@@ -269,6 +269,10 @@ namespace Cursovoy_project
             switch (typeView)
             {
                 case Moderator_Pages.Main:
+                    ModeratorMainPage viewM = new ModeratorMainPage();
+                    ModeratorMainPageViewModel viewModelM = new ModeratorMainPageViewModel(this, customer);
+                    viewM.DataContext = viewModelM;
+                    this.OutputView.Content = viewM;
                     break;
                 case Moderator_Pages.Profile:
                     break;
