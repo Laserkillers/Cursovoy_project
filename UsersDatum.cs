@@ -13,7 +13,7 @@ namespace Cursovoy_project
         public string MiddleName { get; set; }
         public string Email { get; set; }
         public string Telephone { get; set; }
-        public DateTime? DateBirth { get; set; }
+        public DateTime DateBirth { get; set; }
 
         public virtual User IdNavigation { get; set; }
     }

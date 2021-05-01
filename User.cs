@@ -11,5 +11,7 @@ namespace Cursovoy_project
         public int TypeOfAccount { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+
+        public virtual UsersDatum UsersDatum { get; set; }
     }
 }

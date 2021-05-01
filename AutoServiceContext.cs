@@ -27,7 +27,7 @@ namespace Cursovoy_project
         {
             if (!optionsBuilder.IsConfigured)
             {
-            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql("Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;");
             }
         }
@@ -113,9 +113,11 @@ namespace Cursovoy_project
 
             modelBuilder.Entity<UsersDatum>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("users_data");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id");
 
                 entity.Property(e => e.DateBirth)
                     .HasColumnType("date")
@@ -123,21 +125,21 @@ namespace Cursovoy_project
 
                 entity.Property(e => e.Email).HasColumnName("email");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("id");
-
                 entity.Property(e => e.MiddleName).HasColumnName("middle_name");
 
-                entity.Property(e => e.Name).HasColumnName("name");
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("name");
 
-                entity.Property(e => e.Surname).HasColumnName("surname");
+                entity.Property(e => e.Surname)
+                    .IsRequired()
+                    .HasColumnName("surname");
 
                 entity.Property(e => e.Telephone).HasColumnName("telephone");
 
                 entity.HasOne(d => d.IdNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.Id)
+                    .WithOne(p => p.UsersDatum)
+                    .HasForeignKey<UsersDatum>(d => d.Id)
                     .HasConstraintName("id");
             });
 
