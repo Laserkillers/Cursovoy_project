@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Cursovoy_project.View.ModerDeletePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovoy_project.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="24"
+                       Foreground="White"
+                       >
+                Просмотр записей, которые надо удалить
+            </TextBlock>
+            <ComboBox Margin="0 10 0 0"
+                Height="30" Width="150"
+                ItemsSource="{Binding ListOfRowToDelete}"
+                SelectedItem="{Binding SelectedRow}"
+                >
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19">
+                Номер записи: &#160;
+            </TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19" Text="{Binding Path=NumberOfRow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19">
+                Госномер: &#160;
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19" Text="{Binding Path=Gosnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19">
+                Причина удаления: &#160;
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19" Text="{Binding Path=IssureDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19">
+                Дата приёма: &#160;
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="White" FontSize="19" Text="{Binding Path=DateInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    ></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
