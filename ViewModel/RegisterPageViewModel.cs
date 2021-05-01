@@ -57,7 +57,17 @@ namespace Cursovoy_project.ViewModel
         }
         private void OnGoRegister()
         {
-            _MainCodeBehind.LoadWiew(View_number.Login);
+            try
+            {
+                SendToDb();
+                _MainCodeBehind.ShowMessageBox("Вы успешно зарегистрированы!");
+            }
+            catch (Exception e)
+            {
+                _MainCodeBehind.ShowMessageBox(e.Message);
+            }
+            
+            //_MainCodeBehind.LoadWiew(View_number.Login);
         }
 
         // Добавление обработки кнопок
@@ -141,7 +151,7 @@ namespace Cursovoy_project.ViewModel
             set
             {
                 _InputDateBirth = value;
-                Customer_data.DateBirth = value;
+                Customer_data.DateBirth = (DateTime)value;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(InputDateBirth)));
             }
         }
@@ -223,12 +233,36 @@ namespace Cursovoy_project.ViewModel
                 return false;
             return true;
         }
-        //ДОПИСАТЬ ЛОГИКУ РЕГИСТРАЦИИ
+        private void SetId()
+        {
+            db = new AutoServiceContext();
+            db.Users.Load();
+            int numb_of_rows = db.Users.Local
+                .Count();
+            numb_of_rows++;
+            Customer.Id = numb_of_rows;
+            Customer_data.Id = numb_of_rows;
+            Customer_data.IdNavigation = Customer;
+            db.Dispose();
+        }
         private bool SendToDb()
         {
+            if (InputLogin == null) throw new Exception("Не введен логин!");
+            if (InputPassword == null) throw new Exception("Не введен пароль!");
             if (!CheckLogin(Customer.Login)) throw new Exception("Логин не уникален! Введите другой");
+            if (InputDateBirth == null) throw new Exception("Не введена дата рождения!");
+            if (FamilyInput == null) throw new Exception("Не введена фамилия!");
+            if (MidNameInput == null) throw new Exception("Не введено отчество!");
+            if (NameInput == null) throw new Exception("Не введено имя!");
+            if (Customer.TypeOfAccount == 0) throw new Exception("Не выбран тип профиля!");
 
-
+            SetId();
+            db = new AutoServiceContext();
+            db.Users.Add(Customer);
+            db.SaveChanges();
+            db.UsersData.Add(Customer_data);
+            db.SaveChanges();
+            db.Dispose();
 
             return true;
         }

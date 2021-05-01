@@ -44,6 +44,7 @@
         </Button>
         <Button Grid.Column="1" Grid.Row="1" Width="150" Height="30"
                 HorizontalAlignment="Center" FontSize="13"
+                Command="{Binding Register}"
                 Content="Зарегистрироваться" FontFamily="Verdana" Margin="0 9 0 0"
                 Foreground="#ecf0f1" Background="#34495e" Grid.ColumnSpan="2">
             <Button.Resources>
