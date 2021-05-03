@@ -161,8 +161,11 @@ namespace Cursovoy_project.ViewModel
                     CarStatus = "В ожидании машины...";
                 else
                     CarStatus = "Машина в ремонтируется";
-                if (Result[NumbPage].IssureTime != null)
+                if ((Result[NumbPage].IssureTime < DateTime.Now) && (Result[NumbPage].IssureTime != null))
+                    CarStatus = "Машина выдана";
+                else if (Result[NumbPage].IssureTime != null)
                     CarStatus = "Машина готова к выдаче " + Result[NumbPage].IssureTime.ToString();
+                 
             }
 
         }
@@ -187,6 +190,11 @@ namespace Cursovoy_project.ViewModel
                 FaultsCost = Result[i].Cost.ToString() + " р.";
                 ReceptionCarTime = Result[i].ReceptionTime.ToString("f");
                 IssureCarTime = Result[i].IssureTime.ToString();
+                if (i == 0)
+                {
+                    NumbPage = 0;
+                    NumberPage = (NumbPage + 1).ToString() + "/" + Result.Count.ToString();
+                }
                 SetCarStatus();
                 return true;
             }
@@ -222,7 +230,7 @@ namespace Cursovoy_project.ViewModel
             {
                 NumbPage--;
                 SetResult(NumbPage);
-                _NumberPage = NumbPage.ToString() + "/" + Result.Count.ToString();
+                NumberPage = (NumbPage + 1).ToString() + "/" + Result.Count.ToString();
             }
         }
         private bool CanGoBack()
@@ -238,11 +246,11 @@ namespace Cursovoy_project.ViewModel
 
         private void OnGoForward()
         {
-            if (NumbPage < Result.Count)
+            if (NumbPage < Result.Count - 1)
             {
                 NumbPage++;
                 SetResult(NumbPage);
-                _NumberPage = NumbPage.ToString() + "/" + Result.Count.ToString();
+                NumberPage = (NumbPage + 1).ToString() + "/" + Result.Count.ToString();
             }
         }
         private bool CanGoForward() { return true; }
