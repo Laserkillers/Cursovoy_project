@@ -13,6 +13,7 @@ namespace Cursovoy_project.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate {};
         private User Customer;
         private IMainWindowsCodeBehind _MainCodeBehind;
+        private AutoServiceContext db;
 
         public void ModeratorMainPageViewModel(IMainWindowsCodeBehind codeBehind, User customer)
         {
@@ -21,8 +22,8 @@ namespace Cursovoy_project.ViewModel
             Customer = customer;
         }
 
-        private List<string> _ListOfRowToDelete;
-        public List<string> ListOfRowToDelete
+        private List<int> _ListOfRowToDelete;
+        public List<int> ListOfRowToDelete
         {
             get { return _ListOfRowToDelete; }
             set
@@ -40,6 +41,54 @@ namespace Cursovoy_project.ViewModel
                 _SelectedRow = value;
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(SelectedRow)));
             }
+        }
+        private string _NumberOfRow;
+        public string NumberOfRow
+        {
+            get { return _NumberOfRow; }
+            set
+            {
+                _NumberOfRow = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(NumberOfRow)));
+            }
+        }
+        private string _GosNumber;
+        public string GosNumber
+        {
+            get { return _GosNumber; }
+            set
+            {
+                _GosNumber = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(GosNumber)));
+            }
+        }
+        private string _IssureDelete;
+        public string IssureDelete
+        {
+            get { return _IssureDelete; }
+            set
+            {
+                _IssureDelete = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(IssureDelete)));
+            }
+        }
+        private string _DateInput;
+        public string DateInput
+        {
+            get { return _DateInput; }
+            set
+            {
+                _DateInput = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(DateInput)));
+            }
+        }
+
+        private List<int> BuildList()
+        {
+            db = new AutoServiceContext();
+            List<int> rows = new List<int>();
+            //Доделать!
+            return rows;
         }
     }
 }
