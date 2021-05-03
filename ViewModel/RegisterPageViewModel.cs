@@ -239,7 +239,18 @@ namespace Cursovoy_project.ViewModel
             db.Users.Load();
             int numb_of_rows = db.Users.Local
                 .Count();
-            numb_of_rows++;
+            numb_of_rows--;
+
+            int exist_space = db.Users.Local
+                .Where(p => p.Id == numb_of_rows)
+                .Count();
+            while (exist_space > 0)
+            {
+                numb_of_rows++;
+                exist_space = db.Users.Local
+                .Where(p => p.Id == numb_of_rows)
+                .Count();
+            }
             Customer.Id = numb_of_rows;
             Customer_data.Id = numb_of_rows;
             Customer_data.IdNavigation = Customer;
