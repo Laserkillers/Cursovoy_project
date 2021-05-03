@@ -164,11 +164,11 @@
                 VerticalAlignment="Center" HorizontalAlignment="Center" 
                 Foreground="White" FontSize="20"
 Text="{Binding Path=NumberPage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                0/0
+                
             </TextBlock>
             <Button VerticalAlignment="Center"  Content="Вперед"
                 Height="30" Width="120" FontSize="19"
-                    HorizontalAlignment="Right" Margin="170 15 0 0"
+                    HorizontalAlignment="Right" Margin="160 15 0 0"
                 FontFamily="Verdana" Foreground="#ecf0f1" Background="#34495e"
                 Command="{Binding GoForward}">
                 <Button.Resources>
