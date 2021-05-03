@@ -293,7 +293,7 @@ namespace Cursovoy_project.ViewModel
             }
             catch (Exception e)
             {
-                _MainCodeBehind.ShowMessageBox(e.ToString());
+                _MainCodeBehind.ShowMessageBox(e.Message);
             }
         }
         private bool CanGoSave()
