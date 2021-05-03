@@ -14,5 +14,6 @@ namespace Cursovoy_project
         public decimal? Cost { get; set; }
         public DateTime ReceptionTime { get; set; }
         public DateTime? IssureTime { get; set; }
+        public bool? NeedToDelete { get; set; }
     }
 }

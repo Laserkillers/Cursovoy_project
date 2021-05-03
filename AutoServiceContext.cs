@@ -27,7 +27,7 @@ namespace Cursovoy_project
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql("Host=127.0.0.1;Username=user_from_app;Password=12345;Database=AutoService;");
             }
         }
@@ -55,6 +55,8 @@ namespace Cursovoy_project
                     .HasColumnName("gos_number");
 
                 entity.Property(e => e.IssureTime).HasColumnName("issure_time");
+
+                entity.Property(e => e.NeedToDelete).HasColumnName("need_to_delete");
 
                 entity.Property(e => e.ReceptionTime).HasColumnName("reception_time");
             });
