@@ -39,6 +39,7 @@ namespace Cursovoy_project.ViewModel
                 _NeedToDelete = value;
                 if (value)
                     Record.NeedToDelete = true;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(NeedntToDelete)));
             }
         }
 
@@ -51,6 +52,7 @@ namespace Cursovoy_project.ViewModel
                 _NeedntToDelete = value;
                 if (value)
                     Record.NeedToDelete = false;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(NeedToDelete)));
             }
         }
 
@@ -74,8 +76,8 @@ namespace Cursovoy_project.ViewModel
         /// <summary>
         /// Список машин, которые в ремонте
         /// </summary>
-        private List<string> _ListOfCars;
-        public List<string> ListOfCars
+        private List<int> _ListOfCars;
+        public List<int> ListOfCars
         {
             get { return _ListOfCars; }
             set
@@ -84,17 +86,17 @@ namespace Cursovoy_project.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(ListOfCars)));
             }
         }
-        private List<string> BuildListOfCars()
+        private List<int> BuildListOfCars()
         {
             db = new AutoServiceContext();
             db.AutoServices.Load();
-            List<string> temporary = new List<string>();
+            List<int> temporary = new List<int>();
             Result = db.AutoServices.Local
                 .Where(p => ((p.IssureTime == null) || (p.Cost == null) || (p.IssureTime > DateTime.Now)))
                 .ToList();
             foreach (AutoService c in Result)
             {
-                temporary.Add(c.GosNumber);
+                temporary.Add(c.Id);
             }
             db.Dispose();
             return temporary;
@@ -114,15 +116,14 @@ namespace Cursovoy_project.ViewModel
             return true;
         }
 
-        private string _SelectedCar;
-        public string SelectedCar
+        private int _SelectedCar;
+        public int SelectedCar
         {
             get { return _SelectedCar; }
             set
             {
                 _SelectedCar = value;
-                car.GosNumber = value;
-                Record.GosNumber = value;
+                Record.Id = value;
                 UpdateBoxes();
             }
         }
@@ -133,10 +134,10 @@ namespace Cursovoy_project.ViewModel
             db.AutoServices.Load();
             db.ClientsCarData.Load();
             Record = db.AutoServices.Local
-                .Where(p => (p.GosNumber == Record.GosNumber)&&((p.IssureTime == null) || (p.Cost == null) || (p.IssureTime > DateTime.Now)))
+                .Where(p => (p.Id == Record.Id) && ((p.IssureTime == null) || (p.Cost == null) || (p.IssureTime > DateTime.Now)))
                 .FirstOrDefault();
             car = db.ClientsCarData.Local
-                .Where(p=> (p.GosNumber == car.GosNumber))
+                .Where(p => (p.GosNumber == Record.GosNumber))
                 .FirstOrDefault();
             GosNumber = Record.GosNumber;
             CarBrend = car.CarBrend;
@@ -144,6 +145,16 @@ namespace Cursovoy_project.ViewModel
             CarFault = Record.Fault;
             FaultsCost = Record.Cost.ToString();
             ReceptionCarTime = Record.ReceptionTime.ToString();
+            if ((Record.NeedToDelete == null)||(Record.NeedToDelete == false))
+            {
+                NeedntToDelete = true;
+                NeedToDelete = false;
+            }
+            else
+            {
+                NeedToDelete = true;
+                NeedntToDelete = false;
+            }
             db.Dispose();
         }
 
@@ -188,7 +199,7 @@ namespace Cursovoy_project.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(CarFault)));
             }
         }
-        private string _FaultsCost;
+        private string _FaultsCost = "0";
         public string FaultsCost
         {
             get { return _FaultsCost; }

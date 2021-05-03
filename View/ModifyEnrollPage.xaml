@@ -162,9 +162,9 @@
                     Нужно ли удалить запись? : &#160;
                 </TextBlock>
                 <RadioButton GroupName="Del" Margin="0 5 0 0" VerticalAlignment="Center" Content="Да" Foreground="White"
-                    IsChecked="{Binding NeedToDelete, Mode=TwoWay}"/>
+                    IsChecked="{Binding NeedToDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <RadioButton GroupName="Del" Margin="9 5 0 0" VerticalAlignment="Center" Content="Нет" Foreground="White"
-                    IsChecked="{Binding NeedntToDelete, Mode=TwoWay}"/>
+                    IsChecked="{Binding NeedntToDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <Button VerticalAlignment="Center"  Content="Сохранить изменения"
                 Height="30" Width="250" FontSize="19"
