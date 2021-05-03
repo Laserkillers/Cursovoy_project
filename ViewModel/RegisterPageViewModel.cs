@@ -177,7 +177,7 @@ namespace Cursovoy_project.ViewModel
                 _Client_1 = value;
                 if (value)
                     Customer.TypeOfAccount = 4;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_1)));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(Client_1)));
             }
         }
         private bool _Client_2;
@@ -189,7 +189,7 @@ namespace Cursovoy_project.ViewModel
                 _Client_2 = value;
                 if (value)
                     Customer.TypeOfAccount = 31;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_2)));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(Client_2)));
             }
         }
         private bool _Client_3;
@@ -201,7 +201,7 @@ namespace Cursovoy_project.ViewModel
                 _Client_3 = value;
                 if (value)
                     Customer.TypeOfAccount = 11;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_3)));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(Client_3)));
             }
         }
         private bool _Client_4;
@@ -213,7 +213,7 @@ namespace Cursovoy_project.ViewModel
                 _Client_4 = value;
                 if (value)
                     Customer.TypeOfAccount = 21;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(_Client_4)));
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(Client_4)));
             }
         }
         /// <summary>
