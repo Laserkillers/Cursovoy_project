@@ -154,6 +154,18 @@
 
                 </ComboBox>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                    Foreground="White"
+                   FontSize="18">
+                    Нужно ли удалить запись? : &#160;
+                </TextBlock>
+                <RadioButton GroupName="Del" Margin="0 5 0 0" VerticalAlignment="Center" Content="Да" Foreground="White"
+                    IsChecked="{Binding NeedToDelete, Mode=TwoWay}"/>
+                <RadioButton GroupName="Del" Margin="9 5 0 0" VerticalAlignment="Center" Content="Нет" Foreground="White"
+                    IsChecked="{Binding NeedntToDelete, Mode=TwoWay}"/>
+            </StackPanel>
             <Button VerticalAlignment="Center"  Content="Сохранить изменения"
                 Height="30" Width="250" FontSize="19"
                     HorizontalAlignment="Center" Margin="0 15 0 0"
