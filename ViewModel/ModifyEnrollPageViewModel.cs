@@ -27,6 +27,31 @@ namespace Cursovoy_project.ViewModel
             _MainCodeBehind = codeBehind;
             ListOfCars = BuildListOfCars();
             Customer = customer;
+            Record.NeedToDelete = false;
+        }
+
+        private bool _NeedToDelete = false;
+        public bool NeedToDelete
+        {
+            get { return _NeedToDelete; }
+            set
+            {
+                _NeedToDelete = value;
+                if (value)
+                    Record.NeedToDelete = true;
+            }
+        }
+
+        private bool _NeedntToDelete = true;
+        public bool NeedntToDelete
+        {
+            get { return _NeedntToDelete; }
+            set
+            {
+                _NeedntToDelete = value;
+                if (value)
+                    Record.NeedToDelete = false;
+            }
         }
 
         private DateTime _StartDate;
