@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
@@ -34,7 +34,7 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-            Orientation="Horizontal">
+            Orientation="Horizontal" Margin="0 25 0 0">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
                 Foreground="White" FontSize="19">
                 Номер записи: &#160;
@@ -50,7 +50,7 @@
                 Госномер: &#160;
                 </TextBlock>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19" Text="{Binding Path=Gosnumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Foreground="White" FontSize="19" Text="{Binding Path=GosNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -71,6 +71,33 @@
                 Foreground="White" FontSize="19" Text="{Binding Path=DateInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></TextBlock>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="0 15 0 0"
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Grid.Column="0" Grid.Row="1" Margin="0 5 0 0"
+                Height="30" Width="150"
+                Command="{Binding DeleteRow}"
+                Content="Удаление записи"
+                Background="#9EA3B0" Foreground="#0D1F2D"
+                FontSize="17">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="1" Margin="0 5 0 0"
+                Height="30" Width="190"
+                Command="{Binding GoToMainMenu}"
+                Content="Назад в главое меню"
+                Background="#9EA3B0" Foreground="#0D1F2D"
+                FontSize="17">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
