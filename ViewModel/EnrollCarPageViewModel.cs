@@ -157,7 +157,7 @@ namespace Cursovoy_project.ViewModel
             set
             {
                 _InputCarOdometr = value;
-                CarData.Odometr = value;
+                
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(InputCarOdometr)));
             }
         }
@@ -254,7 +254,7 @@ namespace Cursovoy_project.ViewModel
             }
             catch (Exception e)
             {
-                _MainCodeBehind.ShowMessageBox(e.ToString());
+                _MainCodeBehind.ShowMessageBox(e.Message);
             }
             
         }
@@ -270,7 +270,7 @@ namespace Cursovoy_project.ViewModel
             if (CarData.CarBrend == null) throw new Exception("Не заполнено поле: марка авто");
             if (CarData.CarModel == null) throw new Exception("Не заполнено поле: модель авто");
             if (CarData.GosNumber == null) throw new Exception("Не заполнено поле: госномер авто");
-            if (CarData.Odometr == null) throw new Exception("Не заполнено поле: пробег авто");
+            if (InputCarOdometr == 0) throw new Exception("Не заполнено поле: пробег авто");
             if (Record.Fault == null) throw new Exception("Не заполнено поле: поломка авто");
             if (SelectedTime == null) throw new Exception("Не заполнено поле: время записи");
             if (ReceptionTime == null) throw new Exception("Не заполнено поле: дата записи");
@@ -278,12 +278,13 @@ namespace Cursovoy_project.ViewModel
             db = new AutoServiceContext();
             Record.ClientId = Customer.Id;
             car_owner.ClientId = Customer.Id;
-            if ((InputGosNumber != Record.GosNumber)&&(Record.GosNumber != null))
+            if (((InputGosNumber != Record.GosNumber) || (CarData.Odometr != InputCarOdometr)) && (Record.GosNumber != null))
             {
                 Record.GosNumber = InputGosNumber;
+                CarData.Odometr = InputCarOdometr;
                 if (CarData.Id != 0)
                 {
-                    db.Update<ClientsCarDatum>(CarData);
+                    db.Update(CarData);
                     db.SaveChanges();
                 }
                 db.AutoServices.Load();
