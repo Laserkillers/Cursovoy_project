@@ -1,0 +1,222 @@
+﻿<UserControl x:Class="Cursovoy_project.View.ModerAcceptAccsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovoy_project.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock Margin="0 0 0 50"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="24"
+                       Foreground="#524948"
+                       TextWrapping="Wrap">
+                Подтверждение аккаунтов пользователей
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948">
+                Выберите тип аккаунта
+            </TextBlock>
+            <ComboBox
+                Margin="0 10 0 0"
+                Height="30" Width="150"
+                ItemsSource="{Binding ListOfTypeAccs}"
+                SelectedItem="{Binding SelectedType}"
+                ></ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948">
+                Выберите аккаунт
+            </TextBlock>
+            <ComboBox
+                Margin="0 10 0 0"
+                Height="30" Width="150"
+                ItemsSource="{Binding ListOfAccs}"
+                SelectedItem="{Binding SelectedAcc}"
+                ></ComboBox>
+        </StackPanel>
+        <StackPanel Margin="0 5 0 0"
+            Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                    >
+                    ID Пользователя: &#160;
+                </TextBlock>
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                       Text="{Binding Path=UserID,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                    >
+                    Логин пользователя: &#160;
+                </TextBlock>
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                       Text="{Binding Path=UserLog,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                    >
+                    Имя пользователя: &#160;
+                </TextBlock>
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                       Text="{Binding Path=UserName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                    >
+                    Фамилия пользователя: &#160;
+                </TextBlock>
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                       Text="{Binding Path=UserSurName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                    >
+                    Телефон пользователя: &#160;
+                </TextBlock>
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                       Text="{Binding Path=UserTelephone,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                    >
+                    Email пользователя: &#160;
+                </TextBlock>
+                <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948"
+                       Text="{Binding Path=UserEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    >
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 5 0 0">
+            <TextBlock Margin="0 0 0 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       Foreground="#524948">
+                Выберите действие:
+            </TextBlock>
+        </StackPanel>
+        <Button Grid.Column="0" Grid.Row="4" Margin="0 5 0 0"
+                Height="40" Width="190"
+                Command="{Binding AcceptAccount}"
+                Content="Подтвердить аккаунт"
+                Background="#9EA3B0" Foreground="#0D1F2D"
+                FontSize="17">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <Button Margin="0 15 0 0"
+                Height="35" Width="190"
+                Command="{Binding DeleteAccount}"
+                Content="Удалить аккаунт"
+                Background="#9EA3B0" Foreground="#0D1F2D"
+                FontSize="17">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="4" Margin="0 15 0 0"
+                Height="35" Width="190"
+                Command="{Binding GoToMainMenu}"
+                Content="Вернуться в глав. меню"
+                Background="#9EA3B0" Foreground="#0D1F2D"
+                FontSize="17">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
