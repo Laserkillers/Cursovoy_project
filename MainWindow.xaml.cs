@@ -277,6 +277,10 @@ namespace Cursovoy_project
                 case Moderator_Pages.Profile:
                     break;
                 case Moderator_Pages.AcceptAccount:
+                    ModerAcceptAccsPage viewA = new ModerAcceptAccsPage();
+                    ModerAcceptAccsPageViewModel viewModelA = new ModerAcceptAccsPageViewModel(this, customer);
+                    viewA.DataContext = viewModelA;
+                    this.OutputView.Content = viewA;
                     break;
                 case Moderator_Pages.DeleteRows:
                     ModerDeletePage viewD = new ModerDeletePage();
