@@ -22,7 +22,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="24"
-                       Foreground="White"
+                       Foreground="#524948"
                        >
                 Просмотр записей, которые надо удалить
             </TextBlock>
@@ -36,39 +36,39 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
             Orientation="Horizontal" Margin="0 25 0 0">
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19">
+                Foreground="#524948" FontSize="19">
                 Номер записи: &#160;
             </TextBlock>
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19" Text="{Binding Path=NumberOfRow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                Foreground="#524948" FontSize="19" Text="{Binding Path=NumberOfRow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             </TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19">
+                Foreground="#524948" FontSize="19">
                 Госномер: &#160;
                 </TextBlock>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19" Text="{Binding Path=GosNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Foreground="#524948" FontSize="19" Text="{Binding Path=GosNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19">
+                Foreground="#524948" FontSize="19">
                 Причина удаления: &#160;
                 </TextBlock>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19" Text="{Binding Path=IssureDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Foreground="#524948" FontSize="19" Text="{Binding Path=IssureDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19">
+                Foreground="#524948" FontSize="19">
                 Дата приёма: &#160;
                 </TextBlock>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                Foreground="White" FontSize="19" Text="{Binding Path=DateInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Foreground="#524948" FontSize="19" Text="{Binding Path=DateInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     ></TextBlock>
             </StackPanel>
         </StackPanel>
