@@ -101,7 +101,17 @@ namespace Cursovoy_project.ViewModel
             {
                 _SelectedAcc = value;
                 SelectUser.Login = value;
-                UpdateBoxes();
+                if (value != null)
+                    UpdateBoxes();
+                else
+                {
+                    UserID = "";
+                    UserLog = "";
+                    UserName = "";
+                    UserSurName = "";
+                    UserTelephone = "";
+                    UserEmail = "";
+                }
             }
         }
         private void UpdateBoxes()
@@ -242,6 +252,33 @@ namespace Cursovoy_project.ViewModel
             return true;
         }
 
-        //ДОДЕЛАТЬ УДАЛЕНИЕ АККАУНТА!!!!
+        private RelayCommand _DeleteAccount;
+        public RelayCommand DeleteAccount
+        {
+            get { return _DeleteAccount ??= new RelayCommand(OnDeleteAccount, CanDeleteAccount); }
+        }
+        private void OnDeleteAccount()
+        {
+            db = new AutoServiceContext();
+            //int temp_id = SelectUser.Id;
+            SelectUser.UsersDatum = SelectUserData;
+            try
+            {
+                db.Users.Remove(SelectUser);
+                db.SaveChanges();
+                ListOfAccs = BuildAccs();
+                _MainCodeBehind.ShowMessageBox("Удаление прошло успешно!");
+            }
+            catch (Exception e)
+            {
+                _MainCodeBehind.ShowMessageBox(e.Message);
+                throw;
+            }
+            db.Dispose();
+        }
+        private bool CanDeleteAccount()
+        {
+            return true;
+        }
     }
 }
