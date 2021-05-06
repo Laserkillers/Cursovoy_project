@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="Cursovoy_project.View.ProfilePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovoy_project.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                >
+                Добро пожаловать,
+            </TextBlock>
+            <TextBlock
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0" Text="{Binding Path=Greeting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                >
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 5 0 0"
+                >
+                Ваши данные:
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                    >
+                    Фамилия:&#160;
+                </TextBlock>
+                <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                </TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                    >
+                    Имя:&#160;
+                    </TextBlock>
+                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                    >
+                    Отчество:&#160;
+                    </TextBlock>
+                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                    >
+                    Email:&#160;
+                    </TextBlock>
+                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                    >
+                    Номер телефона:&#160;
+                    </TextBlock>
+                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                    >
+                    Дата рождения:&#160;
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
+                FontSize="19" Foreground="White" TextWrapping="Wrap"
+                Margin="0 0 0 0"
+                        />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
+        
+    </Grid>
+</UserControl>
