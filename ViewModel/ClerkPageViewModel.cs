@@ -11,10 +11,12 @@ namespace Cursovoy_project.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         private IMainWindowsCodeBehind _MainCodeBehind;
+        private User Customer = new User();
 
-        public ClerkPageViewModel(IMainWindowsCodeBehind codeBehind)
+        public ClerkPageViewModel(IMainWindowsCodeBehind codeBehind, User customer)
         {
             if (codeBehind == null) throw new ArgumentNullException(nameof(codeBehind));
+            Customer = customer;
             _MainCodeBehind = codeBehind;
         }
 
@@ -26,7 +28,7 @@ namespace Cursovoy_project.ViewModel
 
         private void OnGoToClerkMainPage()
         {
-            _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main);
+            _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main, Customer);
         }
         private bool CanGoToClerkMainPage()
         {
