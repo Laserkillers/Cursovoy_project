@@ -145,8 +145,8 @@ namespace Cursovoy_project.ViewModel
                 switch (Customer.TypeOfAccount)
                 {
                     case 0://Admin
-                        _MainCodeBehind.Change_Background(Background_set.Client);
-                        _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
+                        _MainCodeBehind.Change_Background(Background_set.Admin);
+                        _MainCodeBehind.LoadAdminPage(Admin_Pages.Main, Customer);
                         break;
                     case 1://Master
                         _MainCodeBehind.Change_Background(Background_set.Master);
@@ -158,7 +158,7 @@ namespace Cursovoy_project.ViewModel
                         break;
                     case 3://Clerk
                         _MainCodeBehind.Change_Background(Background_set.Clerk);
-                        _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main);
+                        _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main, Customer);
                         break;
                     case 4://Client
                         _MainCodeBehind.Change_Background(Background_set.Client);
