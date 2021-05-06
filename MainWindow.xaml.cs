@@ -21,10 +21,11 @@ namespace Cursovoy_project
     {
         void ClosePage();
         void Change_Background(Background_set background);
-        void LoadClerksPage(Clerk_view_number typeView);
+        void LoadClerksPage(Clerk_view_number typeView, User customer);
         void LoadClientPage(Client_Page_Load typeView, User customer);
         void LoadMasterPage(Master_Page_Load typeView, User customer);
         void LoadModeratorPage(Moderator_Pages typeView, User customer);
+        void LoadAdminPage(Admin_Pages typeView, User customer);
         void LoadWiew(View_number typeView);
         void ShowMessageBox(string message);
     }
@@ -77,6 +78,16 @@ namespace Cursovoy_project
         Profile,
         AcceptAccount,
         DeleteRows
+    }
+    public enum Admin_Pages
+    {
+        Main,
+        DeleteRows,
+        DeleteUsers,
+        LogClient,
+        LogClerk,
+        LogMaster,
+        LogModer
     }
     /*
        public enum TypeOfAccount
@@ -147,13 +158,13 @@ namespace Cursovoy_project
         /// Загрузка страниц Бухгалтера
         /// </summary>
         /// <param name="typeView"></param>
-        public void LoadClerksPage(Clerk_view_number typeView)
+        public void LoadClerksPage(Clerk_view_number typeView, User customer)
         {
             switch (typeView)
             {
                 case Clerk_view_number.Main:
                     ClerkStartPage viewM = new ClerkStartPage();
-                    ClerkStartPageViewModel viewModelM = new ClerkStartPageViewModel(this);
+                    ClerkStartPageViewModel viewModelM = new ClerkStartPageViewModel(this, customer);
                     viewM.DataContext = viewModelM;
                     this.OutputView.Content = viewM;
                     break;
@@ -161,7 +172,7 @@ namespace Cursovoy_project
                     break;
                 case Clerk_view_number.Receive_Data:
                     ClerkPage viewRD = new ClerkPage();
-                    ClerkPageViewModel viewModelRD = new ClerkPageViewModel(this);
+                    ClerkPageViewModel viewModelRD = new ClerkPageViewModel(this, customer);
                     viewRD.DataContext = viewModelRD;
                     this.OutputView.Content = viewRD;
                     break;
@@ -250,6 +261,7 @@ namespace Cursovoy_project
                     BackGroundClerk();
                     break;
                 case Background_set.Admin:
+                    BackGroudAdmin();
                     break;
                 case Background_set.Moderator:
                     BackGroundModerator();
@@ -287,6 +299,44 @@ namespace Cursovoy_project
                     ModerDeletePageViewModel viewModelD = new ModerDeletePageViewModel(this, customer);
                     viewD.DataContext = viewModelD;
                     this.OutputView.Content = viewD;
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void LoadAdminPage(Admin_Pages typeView, User customer)
+        {
+            switch (typeView)
+            {
+                case Admin_Pages.Main:
+                    AdminMainPage viewA = new AdminMainPage();
+                    AdminMainPageViewModel viewModelA = new AdminMainPageViewModel(this, customer);
+                    viewA.DataContext = viewModelA;
+                    this.OutputView.Content = viewA;
+                    break;
+                case Admin_Pages.DeleteRows:
+                    AdminDeleteRowPage viewD = new AdminDeleteRowPage();
+                    AdminDeleteRowPageViewModel viewModelD = new AdminDeleteRowPageViewModel(this, customer);
+                    viewD.DataContext = viewModelD;
+                    this.OutputView.Content = viewD;
+                    break;
+                case Admin_Pages.DeleteUsers:
+                    AdminDeleteUserPage viewU = new AdminDeleteUserPage();
+                    AdminDeleteUserPageViewModel viewModelU = new AdminDeleteUserPageViewModel(this, customer);
+                    viewU.DataContext = viewModelU;
+                    this.OutputView.Content = viewU;
+                    break;
+                case Admin_Pages.LogClient:
+                    LoadClientPage(Client_Page_Load.Main, customer);
+                    break;
+                case Admin_Pages.LogClerk:
+                    LoadClerksPage(Clerk_view_number.Main, customer);
+                    break;
+                case Admin_Pages.LogMaster:
+                    LoadMasterPage(Master_Page_Load.Main, customer);
+                    break;
+                case Admin_Pages.LogModer:
+                    LoadModeratorPage(Moderator_Pages.Main, customer);
                     break;
                 default:
                     break;
@@ -341,6 +391,14 @@ namespace Cursovoy_project
         {
             LinearGradientBrush gradient = new LinearGradientBrush();
             gradient.GradientStops.Add(SetPartGradient(220, 204, 163, 1));
+            Background = gradient;
+        }
+        private void BackGroudAdmin()
+        {
+            LinearGradientBrush gradient = new LinearGradientBrush();
+            gradient.GradientStops.Add(SetPartGradient(0, 0, 34, 0));
+            gradient.GradientStops.Add(SetPartGradient(12, 98, 145, 0.7));
+            gradient.GradientStops.Add(SetPartGradient(231, 230, 247, 1));
             Background = gradient;
         }
         public void ShowMessageBox(string message)
