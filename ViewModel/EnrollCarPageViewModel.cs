@@ -302,6 +302,7 @@ namespace Cursovoy_project.ViewModel
                 Record.GosNumber = InputGosNumber;
                 db.ClientsCarData.Load();
                 db.AutoServices.Load();
+                CarData.Odometr = InputCarOdometr;
                 db.AutoServices.Add(Record);
                 db.ClientsCarData.Add(CarData);
                 db.SaveChanges();
