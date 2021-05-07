@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -141,6 +142,17 @@
                 </Style>
             </Button.Resources>
         </Button>
-
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
+                Height="30" Width="280" Command="{Binding GoToLoginPage}"
+                VerticalAlignment="Top" Content="Выйти на страницу авторизации" 
+                FontFamily="Verdana" Foreground="#ecf0f1" Background="#34495e"
+                Margin="0 25 0 0" FontSize="15">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
     </Grid>
 </UserControl>
