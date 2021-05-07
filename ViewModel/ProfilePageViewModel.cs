@@ -135,6 +135,7 @@ namespace Cursovoy_project.ViewModel
                     _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
                     break;
                 default:
+                    _MainCodeBehind.ShowMessageBox("Ваш аккаунт не подтвержден! Пожалуйста, подождите, пока модератор не проверит ваш аккаунт");
                     break;
             }
         }
@@ -174,6 +175,20 @@ namespace Cursovoy_project.ViewModel
             CustomerData.Telephone = Telephone ?? throw new Exception("Не введен телефон");
         }
         private bool CanSaveChanges()
+        {
+            return true;
+        }
+
+        private RelayCommand _GoToLoginPage;
+        public RelayCommand GoToLoginPage
+        {
+            get { return _GoToLoginPage; }
+        }
+        private void OnGoToLoginPage()
+        {
+            _MainCodeBehind.LoadWiew(View_number.Main);
+        }
+        private bool CanGoToLoginPage()
         {
             return true;
         }
