@@ -50,10 +50,10 @@
                 </Button.Resources>
             </Button>
         </StackPanel>
-        
         <Button Grid.Column="1" Grid.Row="1"
                 Height="80" Width="270"
                 Content="Перейти к настройкам профиля"
+                Command="{Binding GoToProfile}"
                 Background="#9EA3B0" Foreground="#0D1F2D"
                 FontSize="17">
             <Button.Resources>
