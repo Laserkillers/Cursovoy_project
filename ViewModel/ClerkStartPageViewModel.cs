@@ -72,7 +72,7 @@ namespace Cursovoy_project.ViewModel
         }
         private void OnGoToProfile()
         {
-            _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main, Customer);
+            _MainCodeBehind.LoadClerksPage(Clerk_view_number.Profile, Customer);
         }
         private bool CanGoToProfile()
         {
