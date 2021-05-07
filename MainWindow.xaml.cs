@@ -169,6 +169,10 @@ namespace Cursovoy_project
                     this.OutputView.Content = viewM;
                     break;
                 case Clerk_view_number.Profile:
+                    ProfilePage viewP = new ProfilePage();
+                    ProfilePageViewModel viewModelP = new ProfilePageViewModel(this, customer);
+                    viewP.DataContext = viewModelP;
+                    this.OutputView.Content = viewP;
                     break;
                 case Clerk_view_number.Receive_Data:
                     ClerkPage viewRD = new ClerkPage();
@@ -229,6 +233,10 @@ namespace Cursovoy_project
                     this.OutputView.Content = viewM;
                     break;
                 case Master_Page_Load.Profile:
+                    ProfilePage viewP = new ProfilePage();
+                    ProfilePageViewModel viewModelP = new ProfilePageViewModel(this, customer);
+                    viewP.DataContext = viewModelP;
+                    this.OutputView.Content = viewP;
                     break;
                 case Master_Page_Load.ChangeEnroll:
                     ModifyEnrollPage viewME = new ModifyEnrollPage();
@@ -287,6 +295,10 @@ namespace Cursovoy_project
                     this.OutputView.Content = viewM;
                     break;
                 case Moderator_Pages.Profile:
+                    ProfilePage viewP = new ProfilePage();
+                    ProfilePageViewModel viewModelP = new ProfilePageViewModel(this, customer);
+                    viewP.DataContext = viewModelP;
+                    this.OutputView.Content = viewP;
                     break;
                 case Moderator_Pages.AcceptAccount:
                     ModerAcceptAccsPage viewA = new ModerAcceptAccsPage();
@@ -390,7 +402,7 @@ namespace Cursovoy_project
         private void BackGroundModerator()
         {
             LinearGradientBrush gradient = new LinearGradientBrush();
-            gradient.GradientStops.Add(SetPartGradient(220, 204, 163, 1));
+            gradient.GradientStops.Add(SetPartGradient(12, 98, 145, 1));
             Background = gradient;
         }
         private void BackGroudAdmin()
