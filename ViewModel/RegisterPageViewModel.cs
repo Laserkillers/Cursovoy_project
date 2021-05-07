@@ -60,15 +60,23 @@ namespace Cursovoy_project.ViewModel
             try
             {
                 SendToDb();
-                _MainCodeBehind.ShowMessageBox("Вы успешно зарегистрированы! Сейчас вы будете перенесены в свой профиль");
-                _MainCodeBehind.LoadWiew(View_number.Login);//Заглушка
+                
+                switch (Customer.TypeOfAccount)
+                {
+                    case 4:
+                        _MainCodeBehind.ShowMessageBox("Вы успешно зарегистрированы! Сейчас вы будете перенесены в свой профиль");
+                        _MainCodeBehind.LoadClientPage(Client_Page_Load.Profile, Customer);
+                        break;
+                    default:
+                        _MainCodeBehind.ShowMessageBox("Ваш аккаунт зарегистрирован, но не подтвержден! Заполните недостающие данный и ждите подтверждение аккаунта");
+                        _MainCodeBehind.LoadMasterPage(Master_Page_Load.Profile, Customer);
+                        break;
+                }
             }
             catch (Exception e)
             {
                 _MainCodeBehind.ShowMessageBox(e.Message);
             }
-            
-            //_MainCodeBehind.LoadWiew(View_number.Login);
         }
 
         // Добавление обработки кнопок
