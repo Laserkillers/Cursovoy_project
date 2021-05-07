@@ -199,6 +199,10 @@ namespace Cursovoy_project
                     this.OutputView.Content = viewC;
                     break;
                 case Client_Page_Load.Profile:
+                    ProfilePage viewP = new ProfilePage();
+                    ProfilePageViewModel viewModelP = new ProfilePageViewModel(this, customer);
+                    viewP.DataContext = viewModelP;
+                    this.OutputView.Content = viewP;
                     break;
                 case Client_Page_Load.EnrollCar:
                     EnrollCarPage viewE = new EnrollCarPage(customer);
