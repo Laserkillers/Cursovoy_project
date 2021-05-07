@@ -45,7 +45,8 @@ namespace Cursovoy_project.ViewModel
             temp.Add("Мастер-приёмщик");
             return temp;
         }
-
+        private int TypeAcc
+        {get; set;}
         private string _SelectedType;
         public string SelectedType
         {
@@ -56,12 +57,15 @@ namespace Cursovoy_project.ViewModel
                 switch (value)
                 {
                     case "Модератор":
+                        TypeAcc = 21;
                         SelectUser.TypeOfAccount = 21;
                         break;
                     case "Бухгалтер":
+                        TypeAcc = 31;
                         SelectUser.TypeOfAccount = 31;
                         break;
                     case "Мастер-приёмщик":
+                        TypeAcc = 11;
                         SelectUser.TypeOfAccount = 11;
                         break;
                     default:
@@ -86,7 +90,7 @@ namespace Cursovoy_project.ViewModel
         {
             List<string> temp = new List<string>();
             db = new AutoServiceContext();
-            Results = db.Users.Where(p => (p.TypeOfAccount == SelectUser.TypeOfAccount))
+            Results = db.Users.Where(p => (p.TypeOfAccount == TypeAcc))
                 .ToList();
             foreach (var c in Results)
                 temp.Add(c.Login);
@@ -227,8 +231,8 @@ namespace Cursovoy_project.ViewModel
                 case 31:
                     SelectUser.TypeOfAccount = 3;
                     break;
-                case 41:
-                    SelectUser.TypeOfAccount = 4;
+                case 11:
+                    SelectUser.TypeOfAccount = 1;
                     break;
                 default:
                     break;
