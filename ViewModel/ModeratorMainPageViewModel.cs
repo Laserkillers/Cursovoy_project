@@ -74,5 +74,18 @@ namespace Cursovoy_project.ViewModel
         {
             return true;
         }
+        private RelayCommand _GoToProfile;
+        public RelayCommand GoToProfile
+        {
+            get { return _GoToProfile ??= new RelayCommand(OnGoToProfile, CanGoToProfile); }
+        }
+        private void OnGoToProfile()
+        {
+            _MainCodeBehind.LoadMasterPage(Master_Page_Load.Profile, Customer);
+        }
+        private bool CanGoToProfile()
+        {
+            return true;
+        }
     }
 }
