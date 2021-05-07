@@ -130,6 +130,10 @@ namespace Cursovoy_project.ViewModel
                     _MainCodeBehind.Change_Background(Background_set.Clerk);
                     _MainCodeBehind.LoadClerksPage(Clerk_view_number.Main, Customer);
                     break;
+                case 4:
+                    _MainCodeBehind.Change_Background(Background_set.Client);
+                    _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
+                    break;
                 default:
                     break;
             }
