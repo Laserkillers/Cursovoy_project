@@ -77,5 +77,18 @@ namespace Cursovoy_project.ViewModel
             _MainCodeBehind.Change_Background(Background_set.Main);
             _MainCodeBehind.LoadWiew(View_number.Login);
         }
+        private RelayCommand _GoToProfile;
+        public RelayCommand GoToProfile
+        {
+            get { return _GoToProfile ??= new RelayCommand(OnGoToProfile, CanGoToProfile); }
+        }
+        private void OnGoToProfile()
+        {
+            _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, User_data);
+        }
+        private bool CanGoToProfile()
+        {
+            return true;
+        }
     }
 }
