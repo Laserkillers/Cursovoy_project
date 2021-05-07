@@ -81,7 +81,7 @@ namespace Cursovoy_project.ViewModel
         }
         private void OnGoToProfile()
         {
-            _MainCodeBehind.LoadMasterPage(Master_Page_Load.Profile, Customer);
+            _MainCodeBehind.LoadModeratorPage(Moderator_Pages.Main, Customer);
         }
         private bool CanGoToProfile()
         {
