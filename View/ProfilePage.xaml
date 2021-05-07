@@ -13,6 +13,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -41,11 +42,12 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 10 0 0"
                     >
                     Фамилия:&#160;
                 </TextBlock>
-                <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                <TextBox Width="190" Height="20" Margin="0 15 0 0" VerticalAlignment="Center"
+                         Text="{Binding Path=SurName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </TextBox>
             </StackPanel>
 
@@ -53,11 +55,12 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 5 0 0"
                     >
                     Имя:&#160;
                     </TextBlock>
-                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    <TextBox Width="190" Height="20" Margin="0 10 0 0" VerticalAlignment="Center"
+                             Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </TextBox>
                 </StackPanel>
             </StackPanel>
@@ -66,11 +69,12 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 5 0 0"
                     >
                     Отчество:&#160;
                     </TextBlock>
-                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    <TextBox Width="190" Height="20" Margin="0 10 0 0" VerticalAlignment="Center"
+                             Text="{Binding Path=SecondName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </TextBox>
                 </StackPanel>
             </StackPanel>
@@ -78,11 +82,12 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 5 0 0"
                     >
                     Email:&#160;
                     </TextBlock>
-                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    <TextBox Width="190" Height="20" Margin="0 10 0 0" VerticalAlignment="Center"
+                             Text="{Binding Path=Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </TextBox>
                 </StackPanel>
             </StackPanel>
@@ -90,11 +95,12 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 5 0 0"
                     >
                     Номер телефона:&#160;
                     </TextBlock>
-                    <TextBox Width="190" Height="20" Margin="0 5 0 0" VerticalAlignment="Center">
+                    <TextBox Width="190" Height="20" Margin="0 10 0 0" VerticalAlignment="Center"
+                             Text="{Binding Path=Telephone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </TextBox>
                 </StackPanel>
             </StackPanel>
@@ -102,18 +108,39 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 5 0 0"
                     >
                     Дата рождения:&#160;
                     </TextBlock>
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top"
                 FontSize="19" Foreground="White" TextWrapping="Wrap"
-                Margin="0 0 0 0"
+                Margin="0 5 0 0" Text="{Binding Path=DateBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        
-        
+        <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
+                Height="30" Width="210" Command="{Binding SaveChanges}"
+                VerticalAlignment="Top" Content="Сохранить изменения" 
+                FontFamily="Verdana" Foreground="#ecf0f1" Background="#34495e"
+                Margin="0 25 0 0" FontSize="15">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" 
+                Height="30" Width="210" Command="{Binding GoToUserInterface}"
+                VerticalAlignment="Top" Content="Выйти в меню" 
+                FontFamily="Verdana" Foreground="#ecf0f1" Background="#34495e"
+                Margin="0 25 0 0" FontSize="15">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </UserControl>
