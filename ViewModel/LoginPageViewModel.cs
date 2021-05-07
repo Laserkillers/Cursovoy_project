@@ -165,6 +165,13 @@ namespace Cursovoy_project.ViewModel
                         _MainCodeBehind.LoadClientPage(Client_Page_Load.Main, Customer);
                         break;
                     default:
+                        if (Customer.TypeOfAccount == 0)
+                            _MainCodeBehind.ShowMessageBox("Аккаунт не найден и/или пароль неверный!");
+                        else
+                        {
+                            _MainCodeBehind.ShowMessageBox("Ваш аккаунт не подтвержден! Сейчас вы будете перенесены в профиль");
+                            _MainCodeBehind.LoadClerksPage(Clerk_view_number.Profile, Customer);
+                        }
                         break;
                 }
             }
