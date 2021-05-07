@@ -182,11 +182,12 @@ namespace Cursovoy_project.ViewModel
         private RelayCommand _GoToLoginPage;
         public RelayCommand GoToLoginPage
         {
-            get { return _GoToLoginPage; }
+            get { return _GoToLoginPage ??= new RelayCommand(OnGoToLoginPage, CanGoToLoginPage); }
         }
         private void OnGoToLoginPage()
         {
-            _MainCodeBehind.LoadWiew(View_number.Main);
+            _MainCodeBehind.LoadWiew(View_number.Login);
+            _MainCodeBehind.Change_Background(Background_set.Main);
         }
         private bool CanGoToLoginPage()
         {
