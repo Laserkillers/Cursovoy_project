@@ -23,7 +23,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="24"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        TextWrapping="Wrap">
                 Подтверждение аккаунтов пользователей
             </TextBlock>
@@ -33,7 +33,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948">
+                       Foreground="#dfe0e2">
                 Выберите тип аккаунта
             </TextBlock>
             <ComboBox
@@ -48,7 +48,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948">
+                       Foreground="#dfe0e2">
                 Выберите аккаунт
             </TextBlock>
             <ComboBox
@@ -66,7 +66,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                     >
                     ID Пользователя: &#160;
                 </TextBlock>
@@ -74,7 +74,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        Text="{Binding Path=UserID,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </TextBlock>
@@ -85,7 +85,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                     >
                     Логин пользователя: &#160;
                 </TextBlock>
@@ -93,7 +93,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        Text="{Binding Path=UserLog,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </TextBlock>
@@ -103,7 +103,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                     >
                     Имя пользователя: &#160;
                 </TextBlock>
@@ -111,7 +111,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        Text="{Binding Path=UserName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </TextBlock>
@@ -121,7 +121,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                     >
                     Фамилия пользователя: &#160;
                 </TextBlock>
@@ -129,7 +129,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        Text="{Binding Path=UserSurName,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </TextBlock>
@@ -139,7 +139,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                     >
                     Телефон пользователя: &#160;
                 </TextBlock>
@@ -147,7 +147,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        Text="{Binding Path=UserTelephone,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </TextBlock>
@@ -157,7 +157,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                     >
                     Email пользователя: &#160;
                 </TextBlock>
@@ -165,7 +165,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948"
+                       Foreground="#dfe0e2"
                        Text="{Binding Path=UserEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     >
                 </TextBlock>
@@ -176,7 +176,7 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       Foreground="#524948">
+                       Foreground="#dfe0e2">
                 Выберите действие:
             </TextBlock>
         </StackPanel>
