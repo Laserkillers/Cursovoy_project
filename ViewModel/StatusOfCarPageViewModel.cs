@@ -85,6 +85,7 @@ namespace Cursovoy_project.ViewModel
             FaultsCost = null;
             ReceptionCarTime = null;
             IssureCarTime = null;
+            CarStatus = null;
         }
 
         private string _GosNumber;
